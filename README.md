@@ -6,7 +6,7 @@
 
 46 chapters and 3 appendices connecting engineering fundamentals, semiconductor devices and fabrication, circuits, systems, MEMS, and biosensing. Includes worked examples, practice solutions, academic references, and an offline HTML edition. The textbook is written in Traditional Chinese.
 
-繁體中文跨學科教材：46章正文與3個附錄。每章包含先備知識、模型與假設、自設例題、練習及解答，參考資料列在相應位置。面向大學基礎課程銜接與自學，不宣稱取代完整系所課程。
+繁體中文跨學科教材：46章正文與3個附錄。每章包含先備知識、模型與假設、自設例題、練習及解答，參考資料列在相應位置。面向理工相關科系的大學基礎課程銜接與自學，不宣稱取代完整系所課程。
 
 ## 開始閱讀
 
@@ -19,12 +19,14 @@
 
 目前完成前兩個單元的深入圖解擴編，HTML圖片可開啟原尺寸，亦包含在離線包中。
 
-- [第01單元：從需求到晶片](content/01-engineering-map.md)：7張原創SVG、3組完整算例、8題附解答練習。依「需求→物件與訊號→製造→算例→學科」保留式重編，見[重編紀錄](research/unit-01-restructure-map.md)。
-- [第02單元：工程數學與量綱](content/02-engineering-mathematics.md)：6張原創SVG、A–F六組具名算例、12題附解答練習。從感測器讀值串起單位、微積分、RC、矩陣、取樣與不確定度；原例題、練習及知識點保留，見[擴編紀錄](research/unit-02-editorial.md)與[保留稽核](research/unit-02-expansion-audit.json)。
+- [第01單元：從需求到晶片](content/01-engineering-map.md)：8張原創SVG、3組完整算例、8題附解答練習，另有需求—方案—證據整合任務。依「需求→物件與訊號→製造→算例→學科」保留式重編，見[重編紀錄](research/unit-01-restructure-map.md)。
+- [第02單元：工程數學與量綱](content/02-engineering-mathematics.md)：7張原創SVG、A–F六組具名算例、12題附解答練習，另有5/6 ms等待策略決策。從感測器讀值串起單位、微積分、RC、矩陣、取樣與不確定度；原例題、練習及知識點保留，見[擴編紀錄](research/unit-02-editorial.md)與[保留稽核](research/unit-02-expansion-audit.json)。
 
 第三章以後尚未完成同等擴編，會逐單元校訂，不把全書現況誤稱為每章皆已圖解完成。
 
 第一、二章另完成[逐節銜接補強](research/chapter-transitions.md)：補上小節之間的問題承接與回顧，保留原有知識、例題、練習和圖表。
+
+最新[工程實務與教學編修](research/unit-01-02-professional-review.md)加入理工讀者的能力檢核、建模推導、規格與量測表、判讀活動及2張同風格新圖。[保留稽核](research/unit-01-02-professional-audit.json)確認前一版338個區塊、20題正式練習和13張原圖保留。
 
 圖像採統一的扁平工程示意風格：藍色結構、橘色重點、簡潔編號與標註。後續單元沿用[圖像設計規範](research/figure-style-guide.md)，構圖與細節依內容重新設計，不複製既有圖稿。
 

@@ -1,0 +1,31 @@
+{
+  "baselineCommit": "6248e79f3cf9d8d2e71d56194cb54b1b19a7553c",
+  "chapters": [
+    {
+      "file": "content/01-engineering-map.md",
+      "originalBlocks": 165,
+      "originalBlocksPreservedInOrder": 165,
+      "practiceUnchanged": true,
+      "oldReferencesPreserved": true,
+      "originalFigureFilesUnchanged": 7,
+      "currentFigures": 8,
+      "hanCharactersBefore": 12090,
+      "hanCharactersAfter": 14133
+    },
+    {
+      "file": "content/02-engineering-mathematics.md",
+      "originalBlocks": 173,
+      "originalBlocksPreservedInOrder": 173,
+      "practiceUnchanged": true,
+      "oldReferencesPreserved": true,
+      "originalFigureFilesUnchanged": 6,
+      "currentFigures": 7,
+      "hanCharactersBefore": 8933,
+      "hanCharactersAfter": 10840
+    }
+  ],
+  "curveCoordinatesChecked": 322,
+  "decisionMarkersChecked": 2,
+  "otherContentChanges": [],
+  "errors": []
+}

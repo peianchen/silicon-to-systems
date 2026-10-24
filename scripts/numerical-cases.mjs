@@ -1,5 +1,18 @@
 // Independently evaluated teaching examples; rounded targets use explicit tolerance.
 export const cases = [
+['01 P01 average power limit uW',3*40,120],
+['01 2ms candidate power uW',3*(12000*.002+8*.998),95.952],
+['01 lower sleep candidate power uW',3*(12000*.004+4*.996),155.952],
+['02 decision nominal 5ms percent',100*Math.exp(-5),.6737946999],
+['02 decision slow 5ms percent',100*Math.exp(-5/1.155),1.3180664564],
+['02 decision nominal 6ms percent',100*Math.exp(-6),.2478752177],
+['02 decision slow 6ms percent',100*Math.exp(-6/1.155),.5545296462],
+['02 decision nominal 5ms mV',3300*Math.exp(-5),22.235225097],
+['02 decision slow 5ms mV',3300*Math.exp(-5/1.155),43.496193062],
+['02 decision nominal 6ms mV',3300*Math.exp(-6),8.179882183],
+['02 decision slow 6ms mV',3300*Math.exp(-6/1.155),18.299478326],
+['02 decision 1 percent threshold mV',3.3*.01*1000,33],
+['02 nonzero-initial absolute 33mV limit ms',Math.log(2.3/.033),4.24415684045],
 ['02 concentration SI conversion',1e16*(1e-2)**(-3),1e22],
 ['02 sheet density SI conversion',1e12*(1e-2)**(-2),1e16],
 ['02 dose cm-2',2e17*.2e-4,4e12],

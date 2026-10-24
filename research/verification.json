@@ -5,13 +5,91 @@
   "chapters": 46,
   "appendices": 3,
   "pages": 52,
-  "equations": 1322,
-  "localLinksChecked": 3821,
-  "imageReferencesChecked": 26,
-  "sourceFigureFilesChecked": 13,
-  "externalReferenceURLs": 135,
-  "numericalChecks": 194,
+  "equations": 1341,
+  "localLinksChecked": 3829,
+  "imageReferencesChecked": 30,
+  "sourceFigureFilesChecked": 15,
+  "externalReferenceURLs": 136,
+  "numericalChecks": 207,
   "numericalResults": [
+    {
+      "name": "01 P01 average power limit uW",
+      "actual": 120,
+      "expected": 120,
+      "passed": true
+    },
+    {
+      "name": "01 2ms candidate power uW",
+      "actual": 95.952,
+      "expected": 95.952,
+      "passed": true
+    },
+    {
+      "name": "01 lower sleep candidate power uW",
+      "actual": 155.952,
+      "expected": 155.952,
+      "passed": true
+    },
+    {
+      "name": "02 decision nominal 5ms percent",
+      "actual": 0.6737946999085467,
+      "expected": 0.6737946999,
+      "passed": true
+    },
+    {
+      "name": "02 decision slow 5ms percent",
+      "actual": 1.3180664564261253,
+      "expected": 1.3180664564,
+      "passed": true
+    },
+    {
+      "name": "02 decision nominal 6ms percent",
+      "actual": 0.24787521766663584,
+      "expected": 0.2478752177,
+      "passed": true
+    },
+    {
+      "name": "02 decision slow 6ms percent",
+      "actual": 0.5545296462337092,
+      "expected": 0.5545296462,
+      "passed": true
+    },
+    {
+      "name": "02 decision nominal 5ms mV",
+      "actual": 22.23522509698204,
+      "expected": 22.235225097,
+      "passed": true
+    },
+    {
+      "name": "02 decision slow 5ms mV",
+      "actual": 43.49619306206214,
+      "expected": 43.496193062,
+      "passed": true
+    },
+    {
+      "name": "02 decision nominal 6ms mV",
+      "actual": 8.179882182998982,
+      "expected": 8.179882183,
+      "passed": true
+    },
+    {
+      "name": "02 decision slow 6ms mV",
+      "actual": 18.2994783257124,
+      "expected": 18.299478326,
+      "passed": true
+    },
+    {
+      "name": "02 decision 1 percent threshold mV",
+      "actual": 33,
+      "expected": 33,
+      "passed": true
+    },
+    {
+      "name": "02 nonzero-initial absolute 33mV limit ms",
+      "actual": 4.244156840450761,
+      "expected": 4.24415684045,
+      "passed": true
+    },
     {
       "name": "02 concentration SI conversion",
       "actual": 9.999999999999998e+21,
@@ -1180,12 +1258,12 @@
   "chapterStructure": [
     {
       "file": "01-engineering-map.md",
-      "hanCharacters": 12090,
-      "references": 17
+      "hanCharacters": 14133,
+      "references": 18
     },
     {
       "file": "02-engineering-mathematics.md",
-      "hanCharacters": 8933,
+      "hanCharacters": 10840,
       "references": 11
     },
     {
