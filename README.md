@@ -6,7 +6,7 @@
 
 46 chapters and 3 appendices, now navigated around the semiconductor lifecycle. Engineering fundamentals support chip design, fabrication, packaging, test, and system integration. The roadmap distinguishes existing material from gaps still to be developed; this is not yet a complete RTL-to-GDS or analog tape-out course. Includes worked examples, solutions, primary references, and an offline HTML edition.
 
-繁體中文教材，面向理工相關科系。主線是半導體產業的「需求／架構 → 晶片設計與驗證 → 製造 → 封裝測試 → 系統」，數理、電路與元件物理作支援。46 章與 3 個附錄保留；本階段先重整閱讀入口，不把導覽改名當成所有設計流程已補齊。每章仍包含先備、模型與假設、例題、練習解答及參考資料。
+繁體中文教材，面向理工相關科系。主線是半導體產業的「需求／架構 → 晶片設計與驗證 → 製造 → 封裝測試 → 系統」，數理、電路與元件物理作支援。46 章與 3 個附錄保留；導覽完成後，正逐章補強產業交付主線，第一章先補需求分配、設計與驗證，不宣稱完整投片課程已補齊。每章仍包含先備、模型與假設、例題、練習解答及參考資料。
 
 ## 開始閱讀
 
@@ -21,7 +21,7 @@
 
 目前完成前三個單元的深入圖解擴編，HTML圖片可開啟原尺寸，亦包含在離線包中。
 
-- [第01單元：從需求到晶片](content/01-engineering-map.md)：8張原創SVG、3組完整算例、8題附解答練習，另有需求—方案—證據整合任務。依「需求→物件與訊號→製造→算例→學科」保留式重編，見[重編紀錄](research/unit-01-restructure-map.md)。
+- [第01單元：從需求到晶片](content/01-engineering-map.md)：10張原創SVG、原3組完整算例加介面時間案例、12題附解答練習，另有需求—方案—證據整合任務。補足架構分割、類比／數位設計、簽核投片與矽後驗證；原8圖、8題和有效內容保留。見[產業主線編修](research/unit-01-lifecycle-editorial.md)、[來源範圍](research/unit-01-lifecycle-sources.md)與[保留稽核](research/unit-01-lifecycle-audit.json)。
 - [第02單元：工程數學與量綱](content/02-engineering-mathematics.md)：7張原創SVG、A–F六組具名算例、12題附解答練習，另有5/6 ms等待策略決策。從感測器讀值串起單位、微積分、RC、矩陣、取樣與不確定度；原例題、練習及知識點保留，見[擴編紀錄](research/unit-02-editorial.md)與[保留稽核](research/unit-02-expansion-audit.json)。
 
 - [第03單元：複數、相量與頻域](content/03-complex-phasors.md)：7張原創SVG、12題附完整解答練習。從RC訊號保留需求，串起相量、阻抗、功率、頻率響應、三方案容差與量測判讀；原算例及兩題完整保留，見[編修紀錄](research/unit-03-editorial.md)、[來源查證](research/unit-03-sources.md)與[保留／圖形座標稽核](research/unit-03-expansion-audit.json)。
@@ -30,7 +30,7 @@
 
 第一、二章另完成[逐節銜接補強](research/chapter-transitions.md)：補上小節之間的問題承接與回顧，保留原有知識、例題、練習和圖表。
 
-最新[工程實務與教學編修](research/unit-01-02-professional-review.md)加入理工讀者的能力檢核、建模推導、規格與量測表、判讀活動及2張同風格新圖。[保留稽核](research/unit-01-02-professional-audit.json)確認前一版338個區塊、20題正式練習和13張原圖保留。
+先前[工程實務與教學編修](research/unit-01-02-professional-review.md)加入理工讀者的能力檢核、建模推導、規格與量測表、判讀活動及2張同風格新圖。當時的[保留稽核](research/unit-01-02-professional-audit.json)確認前一版338個區塊、20題正式練習和13張原圖保留；後續各章修訂另立固定基線，不覆寫歷史結果。
 
 圖像採統一的扁平工程示意風格：藍色結構、橘色重點、簡潔編號與標註。後續單元沿用[圖像設計規範](research/figure-style-guide.md)，構圖與細節依內容重新設計，不複製既有圖稿。
 
@@ -40,13 +40,13 @@
 npm ci
 npm run build
 npm run check
-npm run check:roadmap
+npm run check:unit01-lifecycle
 npm run check:navigation
 ```
 
 新正文為 `content/01-*.md` 至 `content/46-*.md`；附錄為90–92。`scripts/build-book.mjs` 只選取這些平面檔案，使用本機 KaTeX 將公式預先排版，沒有外部CDN或分析追蹤。`scripts/check-book.mjs` 驗證章節結構、內部檔案與錨點、公式錯誤、JavaScript語法及教學模型數值，結果寫入 `research/verification.json`。這些檢查不等於同儕審查或真實瀏覽器視覺驗收。
 
-路線單一資料來源是 `src/learning-paths.mjs`，建置同時產生網頁導覽及 `content/learning-paths.md`，避免 GitHub 與網頁的定位清單不一致。`npm run check:roadmap` 核對第一階段相對於固定基線的正文、圖稿、章節網址、正文 HTML、合冊及搜尋保留；往後正文正式改版時，應另立新階段基線，不放寬本次保留紀錄。
+路線單一資料來源是 `src/learning-paths.mjs`，建置同時產生網頁導覽及 `content/learning-paths.md`，避免 GitHub 與網頁的定位清單不一致。`npm run check:unit01-lifecycle` 以209baae為固定基線，核對第一章原文、原題、原圖、來源、錨點、其他48篇正文與時間圖幾何。歷史 `npm run check:roadmap` 僅適用導覽階段209baae；第一章已正式擴編，不能在新版執行它並期待「全部正文不變」。舊腳本、固定基線與結果原樣保留。
 
 ## 產出
 

@@ -2,14 +2,14 @@
   "title": "Silicon to Systems：晶片設計、製造與系統",
   "chapters": 46,
   "appendices": 3,
-  "hanCharacters": 86451,
-  "equations": 1677,
+  "hanCharacters": 91901,
+  "equations": 1679,
   "generatedPages": 53,
   "documents": [
     {
       "file": "01-engineering-map.md",
       "title": "第 01 章　從需求到晶片：建立工程學科地圖",
-      "characters": 14133,
+      "characters": 19583,
       "group": "數理與電路基礎"
     },
     {

@@ -5,12 +5,12 @@
   "chapters": 46,
   "appendices": 3,
   "pages": 53,
-  "equations": 1677,
-  "localLinksChecked": 4259,
-  "imageReferencesChecked": 44,
-  "sourceFigureFilesChecked": 22,
-  "externalReferenceURLs": 149,
-  "numericalChecks": 246,
+  "equations": 1679,
+  "localLinksChecked": 4267,
+  "imageReferencesChecked": 48,
+  "sourceFigureFilesChecked": 24,
+  "externalReferenceURLs": 153,
+  "numericalChecks": 253,
   "numericalResults": [
     {
       "name": "03 quadrant angle deg",
@@ -1297,6 +1297,48 @@
       "passed": true
     },
     {
+      "name": "01 sequential interface budget ms",
+      "actual": 1.5,
+      "expected": 1.5,
+      "passed": true
+    },
+    {
+      "name": "01 unallocated time ms",
+      "actual": 0.5,
+      "expected": 0.5,
+      "passed": true
+    },
+    {
+      "name": "01 exercise 9 remaining system current uA",
+      "actual": 10,
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "name": "01 exercise 10 revised schedule ms",
+      "actual": 1.9000000000000001,
+      "expected": 1.9,
+      "passed": true
+    },
+    {
+      "name": "01 exercise 10 remaining time ms",
+      "actual": 0.09999999999999987,
+      "expected": 0.1,
+      "passed": true
+    },
+    {
+      "name": "01 exercise 10 with extra task ms",
+      "actual": 2.1,
+      "expected": 2.1,
+      "passed": true
+    },
+    {
+      "name": "01 exercise 10 over budget ms",
+      "actual": 0.10000000000000009,
+      "expected": 0.1,
+      "passed": true
+    },
+    {
       "name": "40 deliverable dies",
       "actual": 516.2941246217918,
       "expected": 516.29412462,
@@ -1492,8 +1534,8 @@
   "chapterStructure": [
     {
       "file": "01-engineering-map.md",
-      "hanCharacters": 14133,
-      "references": 18
+      "hanCharacters": 19583,
+      "references": 26
     },
     {
       "file": "02-engineering-mathematics.md",

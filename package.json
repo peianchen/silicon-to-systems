@@ -6,6 +6,7 @@
     "build": "node scripts/build-book.mjs",
     "check": "node scripts/check-book.mjs",
     "check:roadmap": "node scripts/audit-industry-roadmap.mjs",
+    "check:unit01-lifecycle": "node scripts/audit-unit01-lifecycle-expansion.mjs",
     "check:navigation": "node scripts/test-navigation.mjs"
   },
   "dependencies": {

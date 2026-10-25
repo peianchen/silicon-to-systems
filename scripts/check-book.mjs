@@ -36,11 +36,13 @@ for(const doc of manifest.documents){
     must(/^\.\.\/assets\/figures\/[a-z0-9][a-z0-9._-]*\.(svg|png)$/i.test(figure.href),`${doc.file}:unsupported figure URL ${figure.href}`);
   }
   if(n===1){
-    must(new Set(figures.map(f=>f.href)).size>=8,`${doc.file}:fewer than eight distinct figures`);
-    must((md.match(/\*\*練習 \d+：/g)||[]).length===8,`${doc.file}:expected eight complete exercises`);
-    must((md.match(/\*\*解答。\*\*/g)||[]).length===8,`${doc.file}:expected eight solutions`);
-    const captions=[...md.matchAll(/^圖 1-(\d+)　/gm)].map(m=>Number(m[1]));
-    must(JSON.stringify(captions)===JSON.stringify([1,2,3,4,5,6,7,8]),`${doc.file}:figure captions not consecutive`);
+    must(new Set(figures.map(f=>f.href)).size===10,`${doc.file}:expected ten distinct figures`);
+    const formalPractice=md.split('## 練習與參考解答\n')[1]?.split('\n## 單元回顧與下一步')[0]||'';
+    const questionNumbers=[...formalPractice.matchAll(/\*\*練習 (\d+)：/g)].map(m=>Number(m[1]));
+    must(JSON.stringify(questionNumbers)===JSON.stringify(Array.from({length:12},(_,i)=>i+1)),`${doc.file}:expected unique ordered exercises 1–12`);
+    must((formalPractice.match(/\*\*解答。\*\*/g)||[]).length===12,`${doc.file}:expected twelve formal solutions`);
+    const captions=[...md.matchAll(/^圖 1-(\d+[A-Z]?)　/gm)].map(m=>m[1]);
+    must(JSON.stringify(captions)===JSON.stringify(['1','2','2A','3','3A','4','5','6','7','8']),`${doc.file}:old/new figure captions out of order`);
     const readingOrder=['## 1. 先問產品','## 2. 先認物件','## 3. 跟著一筆','## 4. 跟著一顆','## 5. 走進晶圓廠','## 6. 回到工程決策','## 7. 回看整張地圖','## 練習與參考解答'].map(t=>md.indexOf(t));
     must(readingOrder.every((v,i)=>v>=0&&(i===0||v>readingOrder[i-1])),`${doc.file}:reading sequence missing or out of order`);
     const adcIntro=md.indexOf('3.2 先備小步驟'),adcPractice=md.indexOf('**練習 5：ADC');
@@ -172,7 +174,7 @@ for(const file of files.filter(f=>f.endsWith('.css'))){
     try{await stat(f);}catch{errors.push(`Missing CSS resource ${m[1]}`);}
   }
 }
-for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs']){
+for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs','scripts/draw-unit01-lifecycle.mjs','scripts/audit-unit01-lifecycle-expansion.mjs']){
   const result=spawnSync(process.execPath,['--check',path.join(root,f)],{encoding:'utf8'});
   must(result.status===0,`${f}:JavaScript syntax ${result.stderr}`);
 }
@@ -195,6 +197,13 @@ near('01 Little law cycle days',1200/40,30);
 near('01 Little law faster cycle days',1200/50,24);
 near('01 exercise 6 improved delivered cost',2784/192,14.5);
 near('01 exercise 7 larger WIP cycle days',1600/40,40);
+near('01 sequential interface budget ms',.8+.5+.2,1.5);
+near('01 unallocated time ms',2-(.8+.5+.2),.5);
+near('01 exercise 9 remaining system current uA',40-30,10);
+near('01 exercise 10 revised schedule ms',1+.6+.3,1.9);
+near('01 exercise 10 remaining time ms',2-(1+.6+.3),.1);
+near('01 exercise 10 with extra task ms',1+.6+.3+.2,2.1);
+near('01 exercise 10 over budget ms',(1+.6+.3+.2)-2,.1);
 near('40 deliverable dies',600*Math.exp(-.12)*.98*.99,516.29412462);
 near('40 delivered cost',(5000+1.5*600*Math.exp(-.12))/(600*Math.exp(-.12)*.98*.99),11.23047526);
 near('41 beam stiffness N/m',160e9*16e-6*(2e-6)**3/(4*(160e-6)**3),1.25);

@@ -7,12 +7,15 @@
 <li>用 Lot、Route、Recipe 和量測履歷描述一批產品，而不是只背製程名稱。</li>
 <li>把產品要求連到材料、元件、電路、韌體與驗證，找到對應的學科。</li>
 <li>計算簡化的平均功耗、良率成本與生產循環時間，說明模型不能保證什麼。</li>
+<li>將系統需求分配到候選 IC 與外部電路，檢查訊號、資料與時間介面是否相容。</li>
+<li>辨認類比／數位設計產物，區分設計驗證、簽核交付、製造測試及矽後系統證據。</li>
 </ul>
 <p>先備知識是高中代數、面積、比例、能量與單位換算。不必先懂電晶體方程式；遇到新名詞先問「它是物件、加工動作、參數，還是驗收證據？」本章主要以典型矽積體電路為主線。功率元件、化合物半導體、MEMS 與先進多晶粒整合有不同細節，後續章節再展開；不能把所有晶片都想成同一種大型處理器。</p>
 <p>本章會一路跟著這個問題走：<strong>怎麼把「想記錄溫度」變成能驗收、能生產的產品？</strong> 先釐清需求與手上的物件，再追一筆訊號、一顆 IC 和一批晶圓，最後用三個算例回頭找出需要的學科。各段的補充說明都留在原地展開；第一次讀先掌握基本模型，再讀緊接著的適用範圍。</p>
+<p>這張學科地圖以<strong>半導體產業的工程交付</strong>為主軸：第 3 節先把功能分給晶片與系統，第 4 節放大晶片設計、驗證及投片前後的工作，第 5 節再走進製造，第 6–7 節把成本、性能與量測回饋到原需求。這不是單向流水線；封裝、測試及系統限制需要提早進入設計。本章完成的是辨認交付與證據的入門能力，不是完整 IC 流片實作訓練。</p>
 <h3 id="01-engineering-map--理工讀者的使用方式與能力檢核">理工讀者的使用方式與能力檢核</h3>
 <p>本書面向電機、電子、半導體、材料、物理、機械及其他理工相關科系讀者。預期能處理代數、函數與基本物理量，但不預設已修過半導體製程或電路學。熟悉的單位與位元可快速複習；跨科系最需要對齊的是物件邊界、模型假設與證據種類。</p>
-<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">本章完成後應能交出的成果</th><th scope="col">對應示範</th><th scope="col">自我檢核</th></tr></thead><tbody><tr><td>一項有條件、有判定方法的需求</td><td>第 1 節需求表、第 7.3 節工程任務</td><td>練習 1；能否區分模型支持與實測證據？</td></tr><tr><td>一條從訊號、交付物到分析層級的追溯</td><td>圖 1-2、1-3、1-7</td><td>第 7.3 節任務；不只背名詞，要指出誰交什麼證據</td></tr><tr><td>一份帶有單位、分母與適用範圍的計算</td><td>第 6 節三個算例</td><td>練習 4、6、7；答案改變時，能說明原因嗎？</td></tr><tr><td>一項能區分候選原因的檢查</td><td>第 5.2 節薄膜案例</td><td>第 7.3 節任務 2；練習 3、8 補充追溯與證據界線</td></tr></tbody></table></div><p>本章要求能<strong>辨認、計算與判讀</strong>，不要求現在就設計電晶體或編寫製程配方。PDK、Chiplet、互連與可靠度等名詞先掌握用途和限制，細部模型留到後章；現有補充內容保留，供有相關背景者延伸閱讀。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">本章完成後應能交出的成果</th><th scope="col">對應示範</th><th scope="col">自我檢核</th></tr></thead><tbody><tr><td>一項有條件、有判定方法的需求</td><td>第 1 節需求表、第 7.3 節工程任務</td><td>練習 1；能否區分模型支持與實測證據？</td></tr><tr><td>一條從訊號、交付物到分析層級的追溯</td><td>圖 1-2、1-3、1-7</td><td>第 7.3 節任務；不只背名詞，要指出誰交什麼證據</td></tr><tr><td>一份帶有單位、分母與適用範圍的計算</td><td>第 6 節三個算例</td><td>練習 4、6、7；答案改變時，能說明原因嗎？</td></tr><tr><td>一項能區分候選原因的檢查</td><td>第 5.2 節薄膜案例</td><td>第 7.3 節任務 2；練習 3、8 補充追溯與證據界線</td></tr><tr><td>一份晶片邊界與介面預算</td><td>第 3.4 節、圖 1-2A</td><td>練習 9、10；整機需求是否被錯當成單顆 IC 規格？</td></tr><tr><td>一份能指出缺少證據的設計交接判讀</td><td>第 4.1 節設計放大檢視、圖 1-3A</td><td>練習 11、12；版圖、實物與整機證據能否互相取代？</td></tr></tbody></table></div><p>本章要求能<strong>辨認、計算與判讀</strong>，不要求現在就設計電晶體或編寫製程配方。PDK、Chiplet、互連與可靠度等名詞先掌握用途和限制，細部模型留到後章；現有補充內容保留，供有相關背景者延伸閱讀。</p>
 <h2 id="01-engineering-map--1-先問產品需要什麼-不要先選最先進的製程">1. 先問產品需要什麼，不要先選最先進的製程</h2>
 <p>手機裡的處理器、充電器的控制晶片與工業溫度感測器，都使用半導體技術，但它們追求的電壓、速度、精度、成本與可靠度並不相同。電晶體數量多、製程節點名稱小，不代表對每個任務都較適合。工程設計的起點是可驗收的需求，而非單一排行榜。</p>
 <p>「做一個精準又省電的感測器」還不能指導設計。以自設的室內溫度記錄器為例，至少要寫出量測範圍、允許誤差、回報週期、反應時間、供電方式、使用環境和預期成本。每秒記錄一次室溫，與每微秒偵測一次光脈衝，所需頻寬、電源、儲存與測試設備都不同。</p>
@@ -49,18 +52,50 @@
 <p>量化間隔說明轉換器如何分級，卻還沒有回答進入轉換器的訊號是否完整。接著沿訊號鏈往前檢查，看看哪些問題不能靠後面的數位處理補回。</p>
 <h3 id="01-engineering-map--3-3-數位處理不能無條件補救前端">3.3 數位處理不能無條件補救前端</h3>
 <p>沿著這條訊號鏈檢查資訊是否仍被保留。感測器輸出先經偏壓、保護及類比調理，再送進 ADC，最後由演算法與通訊處理。如果前端已飽和，後端增加位元數不能恢復遺失的資訊；若取樣前未充分抑制不符合取樣條件的帶外成分，取樣後可能發生混疊，只靠平滑曲線通常不能唯一重建原訊號。數位處理很有用，但不能無條件補救前端失去的資訊。</p>
+<h3 id="01-engineering-map--3-4-從功能方塊到晶片架構-邊界與介面先約定">3.4 從功能方塊到晶片架構：邊界與介面先約定</h3>
+<p>圖 1-2 回答的是「需要哪些功能」，尚未決定「由幾顆 IC 實現」。<strong>架構</strong>要進一步分配責任：哪些功能放在同一晶粒，哪些留給外部感測器、MCU 或板級電路；介面則要約定彼此交換訊號、命令及資料的條件。只把功能框圈在一起，還不是可執行的 IC 規格。</p>
+<p>為了追蹤一顆 IC，本章自設一個候選邊界：將<strong>類比前端（AFE）、ADC 與數位控制／介面</strong>整合，感測元件、MCU、儲存與選配 RF 保留在外部。這只是教學分割，不表示其成本、功耗或製程可行性已證明，也不是要求讀者先自製晶片才能做記錄器。系統開發可選現成 IC；此處是在理解晶片供應端必須完成的工作。</p>
+<p><a class="figure-link" href="assets/figures/unit01-architecture-contract.svg"><img class="book-figure" src="assets/figures/unit01-architecture-contract.svg" alt="候選混合訊號IC以虛線邊界包住類比前端、ADC與數位控制介面；感測器與MCU儲存留在外部。下方以共同時間尺呈現0.8毫秒就緒、0.5毫秒轉換及0.2毫秒儲存，合計1.5毫秒，距2毫秒候選工作預算尚餘0.5毫秒。" width="1200" height="820" loading="lazy" decoding="async"><span class="figure-hint">開啟原尺寸圖 ↗</span></a></p>
+<p>圖 1-2A　從功能訊號鏈進一步約定晶片邊界。上圖實線箭頭是訊號／命令方向，虛線框是候選 IC 的功能邊界，不是封裝剖面或實際版圖。下圖只畫自設的依序時間預算，寬度按時間比例，不是實測波形；橘色是尚未分配的工作時間，不能當成已證明可用的安全裕量。未畫出的供電、時脈、參考、保護及測試資源仍需設計。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">系統要求</th><th scope="col">分配給候選 IC 的問題</th><th scope="col">仍由外部系統共同承擔的部分</th></tr></thead><tbody><tr><td>P01：整機平均電流不超過 40 µA</td><td>各模式電流、啟動能量、可關閉的功能與喚醒條件</td><td>感測器、MCU、儲存及電源損失；不能每顆都各拿 40 µA</td></tr><tr><td>S01：每秒完成有效新讀值</td><td>就緒、轉換啟動、結果有效及介面傳輸的時間</td><td>MCU 排程、讀取、儲存完成與時間戳</td></tr><tr><td>T01：指定點位比較</td><td>輸入範圍、雜訊、偏移、增益及參考的允許條件</td><td>感測器、安裝、校正參考、演算法及量測不確定度</td></tr></tbody></table></div><p>這張表是責任分配，不是把整機規格複製成 IC 規格。例如 IC 本身低於 40 µA，並不能推出整機通過 P01；ADC 的量化間隔也不能直接當成 T01 的溫度誤差。每一筆分配還要有相容的工作模式、單位、容差及驗證方法。需求分配與介面紀錄的方法可對照 NASA 手冊附錄 I、L；數值與產品架構由本教材自設。[19]</p>
+<p><strong>介面檢查：三個方塊各自通過，整合為什麼仍可能錯？</strong> 為評估第 6.1 節的 2 ms 工作候選方案，先提出下列內部時間分配。它們是待驗證的上限，不是已量到的晶片性能。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">依序活動</th><th scope="col">自設時間上限</th><th scope="col">上限成立的前提</th></tr></thead><tbody><tr><td>喚醒前端及參考，到達就緒條件</td><td>0.8 ms</td><td>就緒包含約定的建立誤差、輸入範圍及參考條件，不只是電源已開</td></tr><tr><td>有效啟動 ADC，到新結果有效</td><td>0.5 ms</td><td>取樣所需期間內，輸入、參考及時脈均符合約定</td></tr><tr><td>MCU 讀取新結果並完成儲存</td><td>0.2 ms</td><td>讀到的是本次轉換，且儲存完成可被確認；相關喚醒成本已納入或另列</td></tr></tbody></table></div><p>假設上述上限在同一候選配置及指定條件下都成立，且依序執行，總時間上界是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.8</mn><mo>+</mo><mn>0.5</mn><mo>+</mo><mn>0.2</mn><mo>=</mo><mn>1.5</mn><mtext> </mtext><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">0.8+0.5+0.2=1.5\,\mathrm{ms}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1.5</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathrm">ms</span></span></span></span></span>；距 2 ms 尚有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>−</mo><mn>1.5</mn><mo>=</mo><mn>0.5</mn><mtext> </mtext><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">2-1.5=0.5\,\mathrm{ms}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1.5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathrm">ms</span></span></span></span></span> 未分配。未列入的通訊、喚醒或重試必須從這份預算扣除；若活動重疊，則應重新分析相依關係，不能照樣相加後當成精確完成時間。</p>
+<p>現在故意放入一個錯誤：類比團隊只承諾最晚 0.8 ms 就緒，ADC 團隊用穩定輸入測試，控制器卻在喚醒後固定 0.2 ms 啟動 ADC。若此時尚未就緒，三個方塊各自的測試都可能通過，整合結果仍不可信。每秒出現一個時間戳，也不能證明每秒量到一筆有效新資料。</p>
+<p>修訂重點不是先把 ADC 位元數加大，而是共同定義<strong>就緒、啟動、結果有效、逾時</strong>的條件。控制器可等待經確認的就緒指示，或使用具有依據的保守等待時間；整合測試要包含接近最慢就緒的情境，並排除誤用上一筆結果。時間預算成立仍不能取代 P01 電流量測、S01 新資料紀錄及 T01 比較量測。</p>
+<p>「有效新資料」表示本次取樣與轉換已完成，不要求碼值與上一筆不同；穩定溫度下，連續的新結果本來就可能相同。資料新鮮度須由完成事件、序號或其他可追溯紀錄確認，不能只比較數字是否變動。</p>
+<p><strong>先停一下。</strong> 若前端尚未就緒，控制器應把這次結果標成有效新資料嗎？不應；應按規格等待、報錯或標示無效，不能用舊值偽裝成更新。能寫出這個行為，才把模糊的方塊箭頭變成可驗證的介面要求。</p>
 <p>到這裡，我們知道記錄器「要做什麼」及「訊號怎麼走」。接下來把視角縮到其中一顆 IC：它怎麼從設計資料變成能焊上電路板的封裝元件？設計記錄器通常可以選用現成 IC，並不表示每做一台產品都要自行設計晶片；下一節是在追溯所用 IC 的來源。</p>
 <h2 id="01-engineering-map--4-跟著一顆-ic-走-從設計資料到出貨">4. 跟著一顆 IC 走：從設計資料到出貨</h2>
 <h3 id="01-engineering-map--4-1-先看流程-每一站要交出什麼">4.1 先看流程：每一站要交出什麼？</h3>
 <p><a class="figure-link" href="assets/figures/unit01-lifecycle.svg"><img class="book-figure" src="assets/figures/unit01-lifecycle.svg" alt="晶片生命旅程：需求與設計資料經光罩與投片進入實體晶圓製造，再經晶圓測試、封裝、最終測試與出貨；各階段標示主要交付物與參與角色。" width="1200" height="730" loading="lazy" decoding="async"><span class="figure-hint">開啟原尺寸圖 ↗</span></a></p>
 <p>圖 1-3　典型積體電路的教學主線。資訊流與實物流在投片前後銜接；實際產品可能有額外驗證、外包交接與不同的測試順序。圖中的單向主線不代表開發沒有回饋迭代。</p>
+<p>先用圖 1-3 看全程。接下來先讀需求與設計的摘要，再把圖中製造前的一段放大，最後沿同一條主線接回光罩、晶圓、封裝測試與系統；不要把放大檢視誤認成多出另一條生產線。</p>
 <p><strong>需求與架構。</strong> 先決定功能、介面與效能預算。例如資料轉換器需要多少輸入範圍、取樣速度與雜訊裕量；電源是否足以供應尖峰電流。這一站應產出可追蹤的規格及驗收方法，而不是只有「高速、低功耗」等形容詞。</p>
 <p><strong>電路、邏輯、版圖與驗證。</strong> 把功能變成電路或硬體描述，再實作成可製造幾何。邏輯功能正確、版圖符合設計規則、版圖與原電路相符，是不同的檢查；通過其中一項不能取代其餘項目。時序、供電完整性、寄生效應及可測試性也要納入。設計資料送交製造的里程碑常稱為 tape-out，但不是成品出貨日。JKU 的積體電路課程把 tape-out 資料與後續晶圓測試、切割、封裝及最終測試分開介紹，適合接著閱讀。[12]</p>
+<h4 id="01-engineering-map--設計放大檢視一-先確定使用哪些模型與規則">設計放大檢視一：先確定使用哪些模型與規則</h4>
+<p>候選 IC 的邊界已經有了，但「把 AFE 和 ADC 整合」還不能直接交給晶圓廠。前端要決定偏壓、增益、頻寬與電源條件；控制邏輯要定義狀態、命令、資料有效與錯誤處置。能否做到，取決於所用製程提供的元件、互連與 I/O 條件，而不只是程式有沒有執行完。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">設計資源</th><th scope="col">在本例回答的問題</th><th scope="col">不能誤當成什麼</th></tr></thead><tbody><tr><td>製程設計套件 PDK</td><td>可用哪些元件與層？如何模擬、繪製及檢查？</td><td>不是完整晶片設計，也不是設備 Recipe</td></tr><tr><td>標準元件／I/O 等元件庫</td><td>哪些邏輯閘、暫存器、輸入輸出單元可用？其模型與限制為何？</td><td>不是只靠邏輯功能相同就可跨製程替換</td></tr><tr><td>可重用 IP</td><td>是否重用某個轉換器、控制器或介面模組？</td><td>舊環境通過不等於新產品整合必然通過</td></tr><tr><td>EDA 工具</td><td>如何描述、模擬、合成、實作與檢查設計？</td><td>工具成功結束不是產品符合規格的保證</td></tr></tbody></table></div><p>PDK 與配套庫的提供方式依供應者而異，模型、規則、工具設定與版本應一併受控。公開 SKY130 文件可用來看元件模型、標準元件與 I/O 庫如何分開描述；所讀公開版另有 experimental preview 限制，不能因能下載就視為已取得量產保證。[20] IP 的重用仍需檢查版本、介面、授權與適用製程，不能省略整合驗證。[14]</p>
+<h4 id="01-engineering-map--設計放大檢視二-類比與數位不是同一份檔案">設計放大檢視二：類比與數位不是同一份檔案</h4>
+<p>候選 IC 包含兩條相互約束的路徑。<strong>類比部分</strong>由元件電路與模型出發，檢查工作點、增益、雜訊、建立時間等；<strong>數位部分</strong>可以用暫存器傳輸層描述（RTL）表達狀態、資料搬移與控制行為。RTL 描述硬體，不是燒進外部 MCU 的韌體；同一個「等待就緒」需求，可能分配在 IC 控制邏輯，也可能由 MCU 韌體負責，責任必須先約定。</p>
+<p><a class="figure-link" href="assets/figures/unit01-design-evidence.svg"><img class="book-figure" src="assets/figures/unit01-design-evidence.svg" alt="設計資料的兩條路徑：共同規格與PDK分別支援類比電路圖、模擬、版圖及寄生後驗證，和數位RTL、功能驗證、合成網表、佈局繞線及時序檢查；兩路匯入受控簽核交付，橘色虛線表示失敗回修，底部提示DFT與封裝系統介面提早規劃。" width="1200" height="860" loading="lazy" decoding="async"><span class="figure-hint">開啟原尺寸圖 ↗</span></a></p>
+<p>圖 1-3A　製造之前的設計表示與證據。藍色實線表示資料依賴，不是實物輸送；橘色虛線表示發現問題後修訂設計，並非可以忽略重新驗證。這是典型類比／數位路徑的教學整理，混合訊號整合需共同檢查介面；各框不是某套工具的完整操作步驟，簽核也不是只靠圖內列出的幾項檢查。原圖 1-3 的生命週期仍然適用。</p>
+<p>數位 RTL 經<strong>合成</strong>轉成邏輯元件的連接描述，再經佈局、時脈與繞線等實體工作；類比部分則把元件與連接實作為版圖，評估匹配、寄生與電性。<strong>網表</strong>描述元件實例及連接；<strong>版圖</strong>描述實體幾何及層次。兩者不能當成同一資料換副檔名。實體實作會改變延遲、負載與耦合，因此常須回修，並非一次畫完就往下交。[21][22]</p>
+<p>例如第 3.4 節要求 ADC 只在前端就緒後啟動：數位功能驗證可檢查控制器是否遵守這個條件；類比模擬則要檢查就緒所代表的電壓誤差是否真的收斂。若測試平台把就緒固定為真，就可能漏掉真正的整合錯誤。驗證計畫必須把需求 ID 連到刺激條件、觀察量與判據，而不只是保存一張「模擬有波形」的截圖。</p>
+<h4 id="01-engineering-map--設計放大檢視三-不同檢查回答不同問題">設計放大檢視三：不同檢查回答不同問題</h4>
+<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">設計產物／檢查</th><th scope="col">能回答的問題</th><th scope="col">單獨不能證明的事</th></tr></thead><tbody><tr><td>功能與介面驗證</td><td>指定情境下，命令、狀態、新資料與錯誤行為是否符合需求？</td><td>未覆蓋情境、實際製程變異或整機環境全部合格</td></tr><tr><td>電路性能與角落分析</td><td>在所選模型及製程／電壓／溫度條件下，增益、電流、時間是否達標？</td><td>模型涵蓋所有製造差異，或等同實測可靠度</td></tr><tr><td>幾何設計規則檢查 DRC</td><td>版圖是否符合所用規則，例如寬度與間距？</td><td>電路功能、連接及全部性能正確</td></tr><tr><td>版圖與電路一致性檢查 LVS</td><td>依比對設定，萃取出的元件與連接是否符合預期電路？</td><td>增益、雜訊或建立時間符合要求</td></tr><tr><td>寄生萃取 PEX 與後續驗證</td><td>把配線等寄生加入後，性能或時序是否仍成立？</td><td>某次模擬收斂就等於所有條件均通過</td></tr><tr><td>受控簽核與資料交付</td><td>約定檢查是否針對同一版設計完成，交付物可否被接受？</td><td>晶圓已製成、已出貨，或整機 P01／S01／T01 通過</td></tr></tbody></table></div><p>DRC、LVS 與寄生後性能必須分開看：版圖合法但接錯線，或連接相同但寄生使讀值太慢，都可能失敗。Virginia Tech 的類比版圖教材分別示範連接比對與萃取後重模擬；修改版圖後，相關檢查也要重新執行。[23] 角落分析中的製程、電壓、溫度常縮寫為 PVT；它不是自動涵蓋所有隨機失配與使用情況的保證。</p>
+<p><strong>判讀停靠點。</strong> 功能模擬和 DRC 通過，LVS 卻不符，能直接交付嗎？不能；必須找出差異及其意義，確認交付電路是預期版本，再完成約定的其餘檢查。反過來，即使 DRC、LVS 都通過，寄生後建立時間不符仍然是未解問題，不能要求製造端任意改 Recipe 來補救。</p>
+<p>**簽核（signoff）**是依專案和製程約定判據完成交付前的檢查與核准，不是通用的一個按鈕。需保留適用版本、模型與約束、檢查結果，以及經權責確認的例外；最終版圖／網表、報告與封裝連接資料不能各自來自不相容的版本。[21] OpenROAD 範例能產生 GDS 版圖檔，但其時序報告仍可能有未滿足的條件，說明「檔案產生」不等於「簽核完成」。[22]</p>
+<p>在交付之前，還要預想如何測到實際晶片。<strong>可測試性設計 DFT</strong>是在設計時安排觀察與控制能力，並評估其功能、面積及時序影響；不是晶片做完後單靠測試程式就能補上任何內部觀測點。[24] 同樣，封裝腳位、晶粒接點、供電、熱與板級介面也要提早規劃，不是最後隨便找一個外殼裝起來。[25] 本例至少要知道如何辨認前端就緒與本次結果有效；實作可依成本、干擾及可觀測需求選擇，不代表每個內部節點都拉到外部腳位。</p>
+<p>現在可以清楚區分三個事件：<strong>tape-out</strong> 是設計資料交付的里程碑；<strong>晶圓投產</strong>是按受控產品及流程投入製造；<strong>成品交付</strong>還需後續加工、封裝與測試。口語「投片」有時混用前兩者，討論交期時必須說清楚，不能把設計資料送出日直接當成晶圓開工日或出貨日。</p>
+<h4 id="01-engineering-map--回到實體產品-設計資料如何接到製造">回到實體產品：設計資料如何接到製造</h4>
+<p>剛才的放大檢視建立了「交什麼、檢查什麼、哪個版本」；以下接回圖 1-3。設計規則和模型提供製造前的約束，但仍要靠實際製造與量測證明產品狀態。</p>
 <p><strong>光罩資料與製作。</strong> 版圖資料還需要對應製程所需的圖形化工作。入門時可先把光罩想成提供圖形資訊的工具，但不能把「一個功能層」永遠等同「一片光罩」：圖形拆分、修正與實際製程會改變對應關係。這裡先掌握設計幾何必須轉成可在設備上實現的圖形，不必先背特定光罩數。</p>
 <p><strong>投片與晶圓製造。</strong> 投片是讓晶圓以指定產品及流程進入製造。晶圓反覆經過成膜、圖形定義、材料移除、摻雜、熱處理、清洗、平坦化與量測等模組，逐步形成元件及互連。加工、排隊、搬運與異常處置都會佔用時間，不能把少數設備的加工分鐘數相加就當成整批交期。</p>
 <p><strong>晶圓測試。</strong> 在仍能識別晶圓上各位置時量測電性，依測試結果建立晶粒分級與位置資料。測試可協助避免把已知不合格晶粒繼續送進昂貴的後續步驟，但「通過此階段」只代表滿足這個測試條件與涵蓋範圍。測試接觸、速度與可觀測性本身也有限制。</p>
 <p><strong>組裝封裝。</strong> 典型單晶粒流程包含分離晶粒、固定、建立電氣連接與保護結構。封裝還需要把熱帶走，並承受材料膨脹與機械應力。晶圓級封裝、多晶粒與先進整合可能改變切割、組裝及測試的相對次序，因此本圖不是所有封裝的操作清單。</p>
 <p><strong>最終測試與出貨判定。</strong> 檢查封裝後的功能及電性，依產品需求分級與判定。可靠度還需要設計、製程控制、資格驗證及持續監控；逐顆最終測試不是「保證任何使用環境下都能使用十年」。TI 的公開可靠度資料明確把可靠度評估連到元件資格驗證、失效機制與使用條件，而不是只靠最後一次量測。[5][6]</p>
+<p><strong>矽後特性量測、除錯與系統整合。</strong> 開發團隊取得實際晶片後，要確認供電、時脈、重置與介面是否正確，再逐步啟用功能、量測性能並對照設計模型。此處按工作種類補充，不表示發生在量產出貨之後；初期特性量測與除錯會回饋產品測試及出貨準備。回到記錄器，就要把候選 IC 接上感測器、MCU 與儲存，核對真正的新結果、時間戳及完整供電電流。首顆樣品能讀到數字，不等於三項整機需求都通過；量產測試、特性量測、資格驗證與系統使用目的確認不能互相取代。[19][21]</p>
+<p>如果實際讀值異常，應同步看輸入／參考、控制事件與結果有效，而不是只看一個最終碼值。設計期預留的測試模式或觀察方式，正是為這類問題準備。此處的「矽後」表示已有實體晶片，不把「驗證」一詞限定為製造前，也不把所有矽後活動都稱作量產篩檢。</p>
 <p>若測試發現問題，回饋的目的通常是找出設計、製程或測試條件的原因，改善後續產品；不代表已經完成且受損的晶粒都能沿箭頭倒退恢復。分清「知識回饋」與「實物可返工」，是理解工廠的重要第一步。</p>
 <h3 id="01-engineering-map--4-2-再看分工-誰負責這些交付物">4.2 再看分工：誰負責這些交付物？</h3>
 <p>先知道工作內容，再看產業角色，比先背公司分類更容易理解。下表是在剛才的生命週期上分配責任，不是另一條與它無關的流程。</p>
@@ -74,6 +109,7 @@
 <p>從產業流程看，前段製造常指晶圓加工，後段製造常指組裝封裝及相關測試；ST 的製造價值鏈資料採用這個區分。[11] 從晶圓製程內部看，FEOL（front end of line）主要形成電晶體等元件，MOL（middle of line）處理元件接觸與局部連接，BEOL（back end of line）建立金屬與介電層互連。imec 的邏輯晶片技術說明進一步區分這三者的位置與功能。[8]</p>
 <p>因此「BEOL 金屬線電阻偏高」與「後段封裝接點失效」不是同一個位置的問題。第一個通常需要晶圓內互連的幾何、材料與量測資料；第二個還可能需要封裝結構、板級應力或接合品質的證據。聽見「後段」時，先問對方指的是工廠分工，還是晶圓內製程段落，比急著猜設備名稱更有效。</p>
 <p>後續互連工程、封裝與散熱章節會接著處理這些問題。先讀懂層級，再進入電阻、寄生電容與熱阻的模型。</p>
+<p>把它接回候選 IC：設計中的元件與配線，必須在製程中形成相應結構；圖 1-4 仍是通用示意，並不是已完成該 IC 的真實剖面。設計階段的規則檢查與製造階段的膜厚、線寬及電性量測是前後相接的證據，不能互相代替。</p>
 <h3 id="01-engineering-map--5-2-再看加工的動作-製程會重複-但不是每層同一個食譜">5.2 再看加工的動作：製程會重複，但不是每層同一個食譜</h3>
 <p>知道 FEOL、MOL、BEOL 分別要形成什麼後，接著看形成它們所用的基本動作。下圖只選一種薄膜圖案轉移作例子，不把它當成所有元件的完整製程。</p>
 <p><a class="figure-link" href="assets/figures/unit01-process-control.svg"><img class="book-figure" src="assets/figures/unit01-process-control.svg" alt="製程與品質控制概念：上方以薄膜形成、微影後光阻遮罩、開口蝕刻、去阻四個剖面示意圖案轉移；下方量測判定合格後放行，異常先隔離及工程判定，並保留批次與版本履歷。" width="1200" height="880" loading="lazy" decoding="async"><span class="figure-hint">開啟原尺寸圖 ↗</span></a></p>
@@ -89,6 +125,7 @@
 <div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">名詞</th><th scope="col">回答的問題</th><th scope="col">自設的記錄例子</th></tr></thead><tbody><tr><td>Lot（批次）</td><td>這是哪一批受共同管理的產品？</td><td>批號 L-101，另保留各片晶圓識別與拆批紀錄</td></tr><tr><td>Route（流程路徑）</td><td>應按什麼次序，經過哪些步驟與檢查？</td><td>路徑 R3：加工、量測、判定，再進入下一模組</td></tr><tr><td>Recipe（設備程序／配方）</td><td>這一步在設備上執行哪一套核准條件？</td><td>程序 P7 第 2 版；參數、步序與適用設備均受控</td></tr><tr><td>製程履歷</td><td>實際上發生了什麼？</td><td>設備／腔體、時間、版本、警報、量測及處置結果</td></tr></tbody></table></div><p>SEMI 術語彙編將 lot、recipe、cycle time 與 throughput 分別定義，適合用來避免把不同概念混成一個「批次設定」。Lot 不以 25 片為普遍定義；載具可容納多少片、某設備一次處理多少片、管理批次實際有多少片，是三個不同問題。[9]</p>
 <p>Route 不是每一步的所有機台參數；Recipe 也不能取代整條 Route。路徑可能包含分支、工程暫停、抽樣量測與核准的返工步驟，版本控制因此很重要。即使兩批產品使用同一個 Recipe 名稱，也仍要確認版本與設備適用範圍。</p>
 <p>追溯系統還需要處理拆批與併批：拆開後不能丟掉原始關聯，合併管理也不能抹去不同的加工歷史。對初學者而言，重點是把「規定要做什麼」與「實際做了什麼」分開保存。這一習慣也適用於電路實驗：電路圖版本、元件批次、韌體版本與量測儀器設定都應留下紀錄。</p>
+<p>因此，追溯鏈不應到工廠門口才開始：設計版本與核准交付資料要能連到製造批次、晶圓／晶粒位置、封裝識別及測試版本。若晶片或韌體更新，要能分清「原設計條件改了」與「同設計下製造狀態變了」，否則系統異常容易被歸給錯誤環節。</p>
 <p>本章不提供可直接操作危險設備的 Recipe。涉及高溫、真空、高壓、雷射、毒性或易燃氣體及化學品時，概念教材不能取代設備訓練、核准程序與安全規範。</p>
 <p>我們已經走過需求、功能、IC 來源與晶圓廠。接著不再增加製程名詞，而是用前面建立的邊界算三個問題：產品能用多久、IC 每顆成本多少，以及工廠多久交得出來。</p>
 <h2 id="01-engineering-map--6-回到工程決策-續航-成本與交期">6. 回到工程決策：續航、成本與交期</h2>
@@ -110,6 +147,7 @@
 <p>若實測高一倍，先量到完整喚醒週期，查看啟動、重試、外接電阻、感測器供電及電源管理，不要先把每個元件都換掉。量測儀器的頻寬、取樣與插入造成的壓降也可能影響結果。模型的價值在於幫你選下一個能驗證原因的實驗。</p>
 <p><strong>把計算接回 P01，而不只比較誰的數字小。</strong> 同一個兩狀態模型可整理成下表；功率均以 3.0 V 計算。</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可橫向捲動"><table><thead><tr><th scope="col">候選方案</th><th scope="col">平均電流</th><th scope="col">平均功率</th><th scope="col">相對 P01 的模型判斷</th></tr></thead><tbody><tr><td>原方案：工作 4 ms、睡眠 8 µA</td><td>55.968 µA</td><td>167.904 µW</td><td>超過 40 µA，模型不支持採用</td></tr><tr><td>工作縮為 2 ms，睡眠仍 8 µA</td><td>31.984 µA</td><td>95.952 µW</td><td>低於平均限制，但 S01、T01 仍無證據</td></tr><tr><td>工作仍 4 ms、睡眠降為 4 µA</td><td>51.984 µA</td><td>155.952 µW</td><td>仍超過平均限制</td></tr></tbody></table></div><p>縮為 2 ms 的前提是<strong>同一項量測與儲存任務確實完成</strong>。提早關閉感測器、讀到尚未建立的電壓，或重複回報上一筆資料，都不是等價的省電方案。下一步要同時取得完整電流波形、新讀值時間戳與指定點位比較；模型支持候選方案，不等於原型已通過驗收。第二章將拆出「讀值前需等待多久」這一個子問題。</p>
+<p>第 3.4 節的 1.5 ms 依序預算，正好提供一份應驗證的活動清單；它沒有證明這顆 IC 已做得出來，也沒有證明各活動都維持本例假設的 12 mA。縮短工作時間不能直接等同提高時脈，更不能省略就緒條件。至於下一例的晶粒尺寸與價格，仍是獨立成本教具，不是這顆候選 IC 的版圖結果或報價。</p>
 <h3 id="01-engineering-map--6-2-算例二-面積-良率與每顆可出貨成本">6.2 算例二：面積、良率與每顆可出貨成本</h3>
 <p>現在把對象從整台記錄器縮到一種單晶粒 IC，追問它的製造投入如何分攤到合格產品。請回想第 2 節的晶圓與裸晶，以及第 4 節先測試、再封裝的典型流程；下列 15.26 元是這個簡化 IC 模型的結果，不是記錄器售價或整機成本。</p>
 <p>以下全部是自設數值，不代表實際工廠報價。直徑 200 mm 的晶圓，扣除邊緣限制後，可用區域直徑為 190 mm；每顆晶粒為 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo>×</mo><mn>10</mn><mtext> </mtext><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">m</mi></mrow></mrow><annotation encoding="application/x-tex">10\times10\,\mathrm{mm}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathrm">mm</span></span></span></span></span>，先忽略切割道。可用面積是</p>
@@ -161,11 +199,13 @@ C_{good}=\frac{2784}{182.4}\approx15.26\,\mathrm{元/顆}.</annotation></semanti
 <li>選出一個耗電候選方案，逐項列出 P01、S01、T01 的證據狀態與缺少的資料。</li>
 <li>假設原型同時出現 ADC 碼頂到上限、平均電流超過預測。對每項現象各列兩個候選原因，再提出一項能區分原因的量測。使用圖 1-2 和圖 1-7，不要先假定兩個現象一定同源。</li>
 <li>回看圖 1-3，寫出「設計到製造」「晶圓測試到封裝」「最終測試到出貨」各應保留什麼交付資料，讓後續異常能追到版本與物件。</li>
+<li>對照圖 1-3A，假設功能模擬與 DRC 通過、LVS 尚未一致、寄生後性能未檢查。列出不能交付的理由，以及下一項應補的證據；不要直接把狀態寫成「設計完成」。</li>
 </ol>
 <p><strong>參考判讀。</strong> 2 ms 方案只在目前耗電模型中低於 P01 限制；三項需求都還需要各自的量測證據。ADC 上限碼可能來自前端輸出過大，也可能是輸入範圍／參考設定不合；先對照實際輸入、參考及設定。額外耗電可能來自喚醒過衝、重試或沒有關閉的負載；同步比對電流波形與韌體時間戳，比單看平均值更能區分原因。這些是候選原因，不是僅憑現象就下的診斷。</p>
 <p>交接資料則應包括：核准版本的設計與製造資料；可對應晶圓位置、測試條件及分級的結果；以及出貨物件識別、測試版本和判定紀錄。不同產品有不同資料格式，重點是下一站能確認接到哪個物件、哪個版本、在哪些條件下通過。</p>
+<p>任務 4 則應先處理 LVS 的不一致，確認設計意圖及資料版本，再完成受影響的功能、性能與寄生後檢查；不能用 DRC 通過替代連接及性能證據。這與原型量測任務不同：一個在判斷設計能否交付，另一個在判斷實際系統是否符合需求。</p>
 <p><strong>自我評量。</strong> 一份合格紀錄應做到四件事：邊界一致、計算與單位正確、模型與實測狀態分明、下一項檢查能區分原因。還要分清「符合寫下的要求」與「要求是否真的滿足使用目的」：即使逐條測試通過，也要回到實際使用情境確認需求沒有漏列。[18]</p>
-<p>接著用八題練習檢查能否把需求、物件、流程及模型連起來。遇到不確定的地方，回到相應小節看假設與圖說，不必靠背誦縮寫猜答案。</p>
+<p>接著用十二題練習檢查能否把需求、物件、流程及模型連起來。前八題保留需求與製造判讀，新增四題檢查架構介面、設計交付及矽後證據。遇到不確定的地方，回到相應小節看假設與圖說，不必靠背誦縮寫猜答案。</p>
 <h2 id="01-engineering-map--練習與參考解答">練習與參考解答</h2>
 <p><strong>練習 1：可驗收的需求。</strong> 把「做一個精準、省電的室內溫度記錄器」改成可測試的要求，至少寫出四項條件。</p>
 <p><strong>解答。</strong> 一個自設版本是：在 10–40 °C、指定供電與穩態安裝條件下，每 10 秒記錄一次；相對校正參考的誤差不超過 ±0.5 °C；另外指定平均功耗上限及量測完整週期的方法。這是規格範例，不表示已證明可達成。若只寫解析度而沒有誤差與參考條件，仍不完整。</p>
@@ -183,11 +223,20 @@ C_{good}=\frac{2784}{182.4}\approx15.26\,\mathrm{元/顆}.</annotation></semanti
 <p><strong>解答。</strong> 原本為 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><mi mathvariant="normal">/</mi><mn>40</mn><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">1200/40=30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1200/40</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">30</span></span></span></span> 日。如果新的長期平均確實是 1,600 片與 40 片／日，則為 40 日，不是更短。若只是某天瞬間增加庫存，不能立刻把瞬間值當成新穩態平均。</p>
 <p><strong>練習 8：測試與可靠度。</strong> 一顆晶片通過最終測試，是否就能保證在任何溫度、供電及負載下運作十年？請列出還需要的證據。</p>
 <p><strong>解答。</strong> 不能。通過只對應指定測試條件及涵蓋範圍。還需適用規格、使用環境、失效機制與資格驗證、製程監控及相應可靠度證據；超出額定條件不能以原測試結果背書。失效機率或壽命估計也不是對每一顆元件的無條件承諾。</p>
+<p><strong>練習 9：整機與晶片邊界。</strong> 候選 IC 在其測試模式下平均電流為 30 µA。能否因此宣告記錄器通過 P01？還應索取哪些資料？</p>
+<p><strong>解答。</strong> 不能；P01 是整台記錄器在指定模式與 300 s 區間內的平均限制，IC 的 30 µA 既未包含外部感測器、MCU、儲存及電源損失，也未證明模式相同。應先核對電壓、溫度、工作／睡眠與更新條件，再取得整機完整電流紀錄。若只是把 40−30=10 µA 當作外部預算，也仍須先證明計算邊界與條件相容。</p>
+<p><strong>練習 10：時間分配與有效資料。</strong> 在另一組自設但相容的條件下，前端最晚 1.0 ms 就緒、ADC 轉換最多 0.6 ms、讀取儲存最多 0.3 ms，按順序執行。相對 2 ms 工作預算剩多少？若另有未計入且不重疊的 0.2 ms 喚醒工作，還符合嗎？</p>
+<p><strong>解答。</strong> 原上界為 1.0+0.6+0.3=1.9 ms，未分配 0.1 ms；另加 0.2 ms 後為 2.1 ms，超過這份內部工作預算 0.1 ms。這份上界無法保證 2 ms，不代表每次實測都需 2.1 ms。不能提早取尚未就緒的輸入來「省」時間；應修改架構、排程或預算並重新驗證。這不直接證明每秒更新的 S01 或平均耗電的 P01 失敗，兩者仍需各自條件與證據。</p>
+<p><strong>練習 11：產生版圖檔就是設計完成嗎？</strong> 某次工具成功輸出 GDS，功能模擬與 DRC 通過，但 LVS 不一致，且寄生後性能尚未驗證。可以把此檔案當成已簽核版本交付製造嗎？</p>
+<p><strong>解答。</strong> 不能。GDS 是幾何資料，工具成功只是產出狀態；DRC 不證明連接正確。先查清 LVS 差異是否來自設計、版圖、模型或比對設定，修正後重跑相關檢查，再完成約定的寄生後性能、時序及其他交付要求。各報告必須對應同一核准版本；即使簽核完成，也不表示晶圓已製成。</p>
+<p><strong>練習 12：首顆矽與整機驗收。</strong> 首顆封裝樣品能回傳數位碼，生產測試也通過。接到記錄器卻偶爾重複前一筆資料，應直接判定 ADC 解析度不足嗎？哪些證據仍缺少？</p>
+<p><strong>解答。</strong> 不應直接歸因。相鄰的新轉換可能因輸入穩定而得到相同碼值；「新資料」指有本次有效取樣／轉換的依據，不是數字每次都必須改變。先同步核對就緒、轉換啟動、結果有效、讀取／儲存及時間戳，確認是否真的重讀舊結果，再區分控制時序、通訊、韌體或類比尚未就緒等候選原因。生產測試只支持其指定涵蓋範圍；仍缺 S01 有效新資料、P01 完整供電電流及 T01 指定點位比較等整機證據，還要確認實際使用目的。增加位元數不會自動修正讀到舊資料的問題。</p>
 <h2 id="01-engineering-map--單元回顧與下一步">單元回顧與下一步</h2>
 <p>前面的練習把需求判定、術語辨識、追溯與計算分開檢查；回到實際產品時，這些判斷卻要一起使用。把它們重新接回記錄器的旅程，便能看見本章各節為何需要彼此。</p>
 <p>現在應能沿著「需求與驗證 → 設計資料 → 製造與追溯 → 封裝測試 → 產品使用」說出每一站的輸入與證據。看見晶片時，先辨認是在談裸晶、封裝還是系統；聽見後段時，先界定晶圓內或產業分工；看到數值時，先檢查單位、分母與適用條件。</p>
 <p>會讀製程新聞不等於能分析元件，會解電路不等於已完成量產驗證，模擬收斂也不等於模型有效。本書要把這些能力連起來。接下來先讀數學、單位與電路基礎，再逐步走進元件、製程與系統；不必今天就把所有縮寫背完，但應能說明每個問題該到哪一層尋找答案。</p>
 <p>例如，功耗算例用「各段電流乘時間」求累積電荷，訊號鏈則留下「輸入改變後，何時才適合讀值」的問題。第二章就從這裡接手：把單位、變化率與累積量整理成工具，再用一個簡化電容節點算出等待時間，讓學科地圖開始變成可操作的解題方法。</p>
+<p>沿原章序讀，第二章會替第 3.4 節「多久才算就緒」補上建模工具；依產業路線選讀，則可帶著需求與介面問題回查所需基礎。兩種讀法不矛盾，也不要求先背完整個學科清單。後續設計實作仍有待逐章深化，本章沒有把入門交付地圖當成完整投片資格。</p>
 <h2 id="01-engineering-map--參考資料與延伸閱讀">參考資料與延伸閱讀</h2>
 <p>以下資料用於相應概念的查證與延伸；章內算例、流程編排與圖解為本教材重新設計。官方文件與課程頁仍由各權利人持有，引用不代表背書。</p>
 <ol>
@@ -209,6 +258,13 @@ C_{good}=\frac{2784}{182.4}\approx15.26\,\mathrm{元/顆}.</annotation></semanti
 <li><a href="https://wiki.analog.com/university/courses/electronics/text/chapter-20" target="_blank" rel="noopener noreferrer">Analog Devices University：Chapter 20 — Analog to Digital Conversion</a>：第 20.2–20.3 節的取樣與量化、N 位元輸出碼數及理想均勻量化間隔；不是整機訊號鏈配置的唯一標準。</li>
 <li><a href="https://www.ti.com/lit/an/snaa077c/snaa077c.pdf" target="_blank" rel="noopener noreferrer">Texas Instruments：AN-156 Specifying A/D and D/A Converters</a>：印刷第 2–3 頁，解析度與準確度／線性度的區別，以及量化誤差與所採轉換慣例的關係。</li>
 <li><a href="https://www.nasa.gov/reference/system-engineering-handbook-appendix/" target="_blank" rel="noopener noreferrer">NASA Systems Engineering Handbook：附錄 B–D</a>：需求可追溯性、驗證與使用目的確認，以及需求驗證矩陣；本章借用紀錄方法，不宣稱產品符合 NASA 標準或已獲認證。</li>
+<li><a href="https://www.nasa.gov/reference/system-engineering-handbook-appendix/" target="_blank" rel="noopener noreferrer">NASA Systems Engineering Handbook：附錄 I、L</a>：本輪另查需求分配、系統整合、介面責任、單位容差及訊號／資料介面；用於第 3.4 節的方法，不是例中時間數值的來源。</li>
+<li><a href="https://skywater-pdk.readthedocs.io/en/main/contents/libraries.html" target="_blank" rel="noopener noreferrer">SkyWater SKY130 PDK：Libraries</a>、<a href="https://skywater-pdk.readthedocs.io/en/main/rules/device-details.html" target="_blank" rel="noopener noreferrer">Device Details</a>與<a href="https://skywater-pdk.readthedocs.io/en/main/" target="_blank" rel="noopener noreferrer">公開版狀態</a>：元件模型、標準元件與 I/O 庫的角色及版本限制；不把公開預覽當成量產保證。</li>
+<li><a href="https://iic-jku.github.io/design-complex-ic/dcic.html" target="_blank" rel="noopener noreferrer">JKU：Design of Complex Integrated Circuits，設計與矽後章節</a>：本輪在原 [12] 範圍外另查第 8.4、8.5、10.5、12.9 節的數位／類比流程、首顆矽除錯及投片檢查；不採課程清單作所有產品的通用簽核規範。</li>
+<li><a href="https://openroad-flow-scripts.readthedocs.io/en/latest/tutorials/FlowTutorial.html" target="_blank" rel="noopener noreferrer">OpenROAD Flow Scripts Tutorial</a>：設計輸入、約束、RTL-to-GDS 與 Timing 報告；特定數位流程，不代表完整功能驗證或類比設計。</li>
+<li><a href="https://www.mics.ece.vt.edu/ICDesign/Tutorials/AnalogIC/lvs.html" target="_blank" rel="noopener noreferrer">Virginia Tech：Layout Versus Schematic</a>及<a href="https://www.mics.ece.vt.edu/ICDesign/Tutorials/AnalogIC/pex.html" target="_blank" rel="noopener noreferrer">Parasitic Extraction and Post-Layout Simulation</a>：連接比對與寄生後性能分開檢查、修改後重新驗證；只引用公開概念，不使用保密 PDK 資料。</li>
+<li><a href="https://static.sw.cdn.siemens.com/siemens-disw-assets/public/3rHm3xBoSaKSeJzgIedAte/en-US/Siemens-SW-Tessent-RTL-Pro-85605-FINAL.pdf" target="_blank" rel="noopener noreferrer">Siemens：Tessent RTL Pro</a>：第 1–3 頁，數位 DFT 前移；不代表所有測試結構都在 RTL 插入，也不涵蓋所有類比測試。</li>
+<li><a href="https://static.sw.cdn.siemens.com/siemens-disw-assets/public/5s0l7Xkc2wqROYOYdxWyQ/en-US/82672_Siemens%20SW%20Next%20Generation%20IC%20Packaging%20Part%201%20WP%2082672%20C1.pdf" target="_blank" rel="noopener noreferrer">Siemens：Next Generation IC Packaging，Part 1</a>：第 3–6 頁，封裝、I/O、供電、熱與測試的共同規劃；先進整合範例，不指定本記錄器必須採其工具或封裝。</li>
 </ol>
 </section><section class="book-section" id="02-engineering-mathematics"><div class="eyebrow">數理與電路基礎</div><h1 id="02-engineering-mathematics--第-02-章-工程數學與量綱">第 02 章　工程數學與量綱</h1>
 <h2 id="02-engineering-mathematics--學習目標與先備知識">學習目標與先備知識</h2>
