@@ -42,10 +42,10 @@
 <ul>
 <li>章號 01–46 連續，附錄 90–92 齊全；各章檢查教學結構與至少兩個不同參考網址。字數門檻只是結構底線，不是學術完備性的評分。</li>
 <li>所有公式由 KaTeX 在建置時以錯誤即停止模式排版；同一公式在分章與整本中的重複不計為兩個教材公式。</li>
-<li>207 項數值回歸檢查，涵蓋各章代表性例題及互動功耗／良率模型；前兩章擴編後的194項，再加本次工程方案判讀13項。這不是宣稱已把每一句自然語言轉成形式證明。</li>
+<li>246 項數值回歸檢查，涵蓋各章代表性例題及互動功耗／良率模型；前兩章編修後207項，再加第三章擴編39項。這不是宣稱已把每一句自然語言轉成形式證明。</li>
 <li>所有輸出頁面的本機檔案、JavaScript、字型及內部錨點檢查；檢查重複識別、未排版數學、JavaScript 語法及搜尋索引項目。</li>
 <li>ZIP 完整性及資源清單檢查；49 個章節與附錄均進入搜尋索引。</li>
-<li>第01單元8張、第02單元7張原創圖檔已加入單章、合冊及離線包；檢查非空替代文字、尺寸、圖片路徑、原檔與輸出檔及ZIP內容一致性。15張SVG另檢查標題、描述、共用風格識別與色盤及無外部或主動執行內容。</li>
+<li>第01單元8張、第02單元7張、第03單元7張原創圖檔已加入單章、合冊及離線包；檢查非空替代文字、尺寸、圖片路徑、原檔與輸出檔及ZIP內容一致性。22張SVG另檢查標題、描述、共用風格識別與色盤及無外部或主動執行內容。</li>
 <li>依賴套件安全查核本次回報零項已知問題，不表示未來永遠沒有弱點。</li>
 </ul>
 <p>最新產出數量見 <a href="book-manifest.json">建置清單</a>。詳細機器檢查結果保存在原始專案的 research/verification.json，數值案例在 scripts/numerical-cases.mjs。</p>
@@ -59,5 +59,6 @@
 <p>第一、二章後續補上20段逐節銜接（第一章6段、第二章14段），並明確化第二章兩處節號／算例指向。原文區塊順序、知識點、練習整段、參考資料與13張圖稿保留；完整對照見原始專案research/chapter-transitions.md及chapter-transitions-audit.json。這是閱讀連貫性修訂，不是新的課程擴編。</p>
 <p>本環境沒有啟用的瀏覽器，因此沒有實際桌機／手機瀏覽器視覺與互動驗收；已檢查程式中的焦點、目錄、搜尋及離線資源，但不宣稱已用真實瀏覽器點過全部操作。也沒有驗收 PDF 分頁、實體電路、SPICE、晶圓製程或生物實驗。</p>
 <p>2026-10-25 再以理工相關科系為讀者進行工程實務／教學編修：兩章加入成果與檢核對照，第一章補需求子集、同任務耗電比較及一頁追溯任務；第二章補建模表、RC推導、短判讀活動與5/6 ms方案決策。新增需求—證據圖及RC誤差門檻圖，原有13圖不變，現共15圖。對照6248e79基線，兩章165／173個區塊逐字依序保留，正式8／12題和原參考資料保留；第一章另加NASA需求追溯依據。兩張新圖已渲染目視，RC圖322個曲線座標及2個決策點另作公式比對。完整內容與來源範圍見原始專案research/unit-01-02-professional-review.md及unit-01-02-professional-audit.json。</p>
+<p>2026-10-25 第03單元完成保留式擴編：八節主線、7張原創SVG、12題完整解答、三電容候選與最不利容差及幅相模型辨識。對照0971005基線22個非標題區塊，20個逐字保留、2個精確化；四步RC算例、原兩題答案、兩個顯示公式與兩筆來源保留。64個其他正文／舊圖檔未變。七圖均已渲染目視，實際SVG中4,593個曲線／向量座標另由獨立公式核對，新增39項數值回歸。兩路內部交叉校閱後補清RMS先備、AC耦合、相位參考及功率比條件。資料與完整紀錄見原始專案research/unit-03-sources.md、unit-03-editorial.md、unit-03-expansion-audit.json。上文第三章尚未擴編的敘述為先前階段狀態；目前尚未完成同等擴編的是第四章以後。</p>
 <p>正式課程採用前宜由相應領域教師再審；危險設備與化學、生物操作需依實驗室規程及訓練。發現問題時應保留章名、公式或例題位置及所用條件，以便修訂而不破壞追溯。</p>
 </article><footer><span>半導體・電子・電機工程 · 2026 學習版</span><a href="quality.html">檢查紀錄</a><a href="chapters/92-bibliography.html">學術資料與編寫說明</a></footer></main><dialog id="searchDialog" class="search-dialog" aria-labelledby="searchLabel"><form method="dialog"><button aria-label="關閉搜尋">關閉</button></form><label id="searchLabel" for="searchInput">搜尋章節、術語與全文</label><input id="searchInput" type="search" placeholder="例如：跨導、混疊、Debye、良率" autocomplete="off"><p id="searchCount" aria-live="polite"></p><div id="searchResults"></div></dialog><script defer src="assets/search-index.js"></script><script defer src="assets/models.js"></script><script defer src="assets/book.js"></script></body></html>

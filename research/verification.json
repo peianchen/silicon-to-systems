@@ -5,13 +5,247 @@
   "chapters": 46,
   "appendices": 3,
   "pages": 52,
-  "equations": 1341,
-  "localLinksChecked": 3829,
-  "imageReferencesChecked": 30,
-  "sourceFigureFilesChecked": 15,
-  "externalReferenceURLs": 136,
-  "numericalChecks": 207,
+  "equations": 1677,
+  "localLinksChecked": 3860,
+  "imageReferencesChecked": 44,
+  "sourceFigureFilesChecked": 22,
+  "externalReferenceURLs": 144,
+  "numericalChecks": 246,
   "numericalResults": [
+    {
+      "name": "03 quadrant angle deg",
+      "actual": -126.86989764584402,
+      "expected": -126.869897646,
+      "passed": true
+    },
+    {
+      "name": "03 v at zero V",
+      "actual": 1.2247448713915892,
+      "expected": 1.224744871,
+      "passed": true
+    },
+    {
+      "name": "03 phase advance us",
+      "actual": 83.33333333333333,
+      "expected": 83.333333333,
+      "passed": true
+    },
+    {
+      "name": "03 inductor X ohm",
+      "actual": 62.83185307179586,
+      "expected": 62.831853072,
+      "passed": true
+    },
+    {
+      "name": "03 inductor current mA",
+      "actual": 15.915494309189533,
+      "expected": 15.915494309,
+      "passed": true
+    },
+    {
+      "name": "03 capacitor current mA",
+      "actual": 0.6283185307179585,
+      "expected": 0.628318531,
+      "passed": true
+    },
+    {
+      "name": "03 DC plus AC rms V",
+      "actual": 2.23606797749979,
+      "expected": 2.236067977,
+      "passed": true
+    },
+    {
+      "name": "03 DC plus AC power mW",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "03 P W",
+      "actual": 10.000000000000002,
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "name": "03 Q var",
+      "actual": 17.32050807568877,
+      "expected": 17.320508076,
+      "passed": true
+    },
+    {
+      "name": "03 peak current mA",
+      "actual": 0.752387133961104,
+      "expected": 0.75238675,
+      "passed": true
+    },
+    {
+      "name": "03 VR real V",
+      "actual": 0.28304319967510216,
+      "expected": 0.2830432,
+      "passed": true
+    },
+    {
+      "name": "03 VR imaginary V",
+      "actual": 0.45047724336838857,
+      "expected": 0.450477243,
+      "passed": true
+    },
+    {
+      "name": "03 VC real V",
+      "actual": 0.7169568003248977,
+      "expected": 0.7169568,
+      "passed": true
+    },
+    {
+      "name": "03 47nF 1k gain",
+      "actual": 0.9590554449657784,
+      "expected": 0.95905984,
+      "passed": true
+    },
+    {
+      "name": "03 47nF 10k gain",
+      "actual": 0.3207372403204032,
+      "expected": 0.32074343,
+      "passed": true
+    },
+    {
+      "name": "03 100nF 1k gain",
+      "actual": 0.8467330159648304,
+      "expected": 0.846733016,
+      "passed": true
+    },
+    {
+      "name": "03 220nF 1k gain",
+      "actual": 0.5861343088758331,
+      "expected": 0.586127946,
+      "passed": true
+    },
+    {
+      "name": "03 220nF 10k gain",
+      "actual": 0.0721545906572816,
+      "expected": 0.07215459,
+      "passed": true
+    },
+    {
+      "name": "03 x0.1 gain",
+      "actual": 0.9950371902099893,
+      "expected": 0.99503719,
+      "passed": true
+    },
+    {
+      "name": "03 x0.1 dB",
+      "actual": -0.043213737826425784,
+      "expected": -0.043213738,
+      "passed": true
+    },
+    {
+      "name": "03 x0.1 phase deg",
+      "actual": -5.710593137499643,
+      "expected": -5.710593137,
+      "passed": true
+    },
+    {
+      "name": "03 x1 dB",
+      "actual": -3.010299956639812,
+      "expected": -3.010299957,
+      "passed": true
+    },
+    {
+      "name": "03 x10 dB",
+      "actual": -20.043213737826427,
+      "expected": -20.043213738,
+      "passed": true
+    },
+    {
+      "name": "03 x10 phase deg",
+      "actual": -84.28940686250037,
+      "expected": -84.289406863,
+      "passed": true
+    },
+    {
+      "name": "03 phase delay 1k us",
+      "actual": 89.28307676483905,
+      "expected": 89.283076765,
+      "passed": true
+    },
+    {
+      "name": "03 phase delay 10k us",
+      "actual": 22.488038589156197,
+      "expected": 22.488038589,
+      "passed": true
+    },
+    {
+      "name": "03 output interference rms V",
+      "actual": 0.03143534509551797,
+      "expected": 0.0314353455,
+      "passed": true
+    },
+    {
+      "name": "03 output tone ratio",
+      "actual": 0.03712545100145671,
+      "expected": 0.03712543,
+      "passed": true
+    },
+    {
+      "name": "03 allowed tau min us",
+      "actual": 77.96968012336761,
+      "expected": 77.969680123,
+      "passed": true
+    },
+    {
+      "name": "03 allowed tau max us",
+      "actual": 119.3662073189215,
+      "expected": 119.366207319,
+      "passed": true
+    },
+    {
+      "name": "03 tau min us",
+      "actual": 85.5,
+      "expected": 85.5,
+      "passed": true
+    },
+    {
+      "name": "03 tau max us",
+      "actual": 115.50000000000001,
+      "expected": 115.5,
+      "passed": true
+    },
+    {
+      "name": "03 worst pass gain",
+      "actual": 0.8093380899714624,
+      "expected": 0.809338005,
+      "passed": true
+    },
+    {
+      "name": "03 worst stop gain",
+      "actual": 0.18300257707264844,
+      "expected": 0.183003202,
+      "passed": true
+    },
+    {
+      "name": "03 model phase from magnitude deg",
+      "actual": -35.90406858331717,
+      "expected": -35.904068584,
+      "passed": true
+    },
+    {
+      "name": "03 model magnitude from phase",
+      "actual": 0.984807753012208,
+      "expected": 0.984807753,
+      "passed": true
+    },
+    {
+      "name": "03 unequal-R voltage dB",
+      "actual": 6.020599913279624,
+      "expected": 6.020599913,
+      "passed": true
+    },
+    {
+      "name": "03 unequal-R power ratio",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
     {
       "name": "01 P01 average power limit uW",
       "actual": 120,
@@ -1268,8 +1502,8 @@
     },
     {
       "file": "03-complex-phasors.md",
-      "hanCharacters": 1181,
-      "references": 2
+      "hanCharacters": 7350,
+      "references": 10
     },
     {
       "file": "04-circuit-analysis.md",

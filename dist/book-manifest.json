@@ -2,8 +2,8 @@
   "title": "半導體・電子・電機工程",
   "chapters": 46,
   "appendices": 3,
-  "hanCharacters": 80282,
-  "equations": 1341,
+  "hanCharacters": 86451,
+  "equations": 1677,
   "generatedPages": 52,
   "documents": [
     {
@@ -21,7 +21,7 @@
     {
       "file": "03-complex-phasors.md",
       "title": "第 03 章　複數、相量與頻域",
-      "characters": 1181,
+      "characters": 7350,
       "group": "數理與電路基礎"
     },
     {

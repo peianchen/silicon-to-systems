@@ -1,0 +1,19 @@
+{
+  "baselineCommit": "0971005f0847135f17ba99f2848d38f781b3ce36",
+  "file": "content/03-complex-phasors.md",
+  "baselineNonHeadingBlocks": 22,
+  "unchangedBlocksIgnoringWhitespace": 20,
+  "explicitClarifications": 2,
+  "originalExercisesAndSolutionsPreserved": 2,
+  "originalRCFourStepsPreserved": true,
+  "originalDisplayEquationsPreserved": 2,
+  "originalReferencesPreserved": 2,
+  "unchangedOtherContentAndOldFigures": 64,
+  "currentExercises": 12,
+  "currentFigures": 7,
+  "baselineHanCharacters": 1181,
+  "currentHanCharacters": 7350,
+  "actualSVGPointsChecked": 4593,
+  "figureRenderReview": "Seven SVGs rendered and visually inspected; curves and vector endpoints checked from actual SVG path coordinates. No browser QA available.",
+  "errors": []
+}

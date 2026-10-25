@@ -17,12 +17,14 @@
 
 ## 逐單元圖解擴編
 
-目前完成前兩個單元的深入圖解擴編，HTML圖片可開啟原尺寸，亦包含在離線包中。
+目前完成前三個單元的深入圖解擴編，HTML圖片可開啟原尺寸，亦包含在離線包中。
 
 - [第01單元：從需求到晶片](content/01-engineering-map.md)：8張原創SVG、3組完整算例、8題附解答練習，另有需求—方案—證據整合任務。依「需求→物件與訊號→製造→算例→學科」保留式重編，見[重編紀錄](research/unit-01-restructure-map.md)。
 - [第02單元：工程數學與量綱](content/02-engineering-mathematics.md)：7張原創SVG、A–F六組具名算例、12題附解答練習，另有5/6 ms等待策略決策。從感測器讀值串起單位、微積分、RC、矩陣、取樣與不確定度；原例題、練習及知識點保留，見[擴編紀錄](research/unit-02-editorial.md)與[保留稽核](research/unit-02-expansion-audit.json)。
 
-第三章以後尚未完成同等擴編，會逐單元校訂，不把全書現況誤稱為每章皆已圖解完成。
+- [第03單元：複數、相量與頻域](content/03-complex-phasors.md)：7張原創SVG、12題附完整解答練習。從RC訊號保留需求，串起相量、阻抗、功率、頻率響應、三方案容差與量測判讀；原算例及兩題完整保留，見[編修紀錄](research/unit-03-editorial.md)、[來源查證](research/unit-03-sources.md)與[保留／圖形座標稽核](research/unit-03-expansion-audit.json)。
+
+第四章以後尚未完成同等擴編，會逐單元校訂，不把全書現況誤稱為每章皆已圖解完成。
 
 第一、二章另完成[逐節銜接補強](research/chapter-transitions.md)：補上小節之間的問題承接與回顧，保留原有知識、例題、練習和圖表。
 
