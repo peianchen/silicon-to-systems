@@ -4,12 +4,12 @@
   "mode": "release",
   "chapters": 46,
   "appendices": 3,
-  "pages": 52,
+  "pages": 53,
   "equations": 1677,
-  "localLinksChecked": 3860,
+  "localLinksChecked": 4259,
   "imageReferencesChecked": 44,
   "sourceFigureFilesChecked": 22,
-  "externalReferenceURLs": 144,
+  "externalReferenceURLs": 149,
   "numericalChecks": 246,
   "numericalResults": [
     {
@@ -1722,5 +1722,6 @@
     }
   ],
   "errors": [],
-  "browserQA": "Unavailable: no enabled browsers in cua. Static structure, links, equation rendering and model unit tests only; no visual certification."
+  "browserQA": "Unavailable: no enabled browsers in cua. Static structure, links, equation rendering and model unit tests only; no visual certification.",
+  "navigationStubCases": 16
 }

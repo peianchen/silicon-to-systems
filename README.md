@@ -1,16 +1,18 @@
 # Silicon to Systems
 
-### 半導體、電子與電機工程教材
+### 從晶片設計、製造到系統的半導體工程教材
 
-**Semiconductor, Electronics & Electrical Engineering — a Traditional Chinese study guide**
+**Semiconductor engineering, from chip design to manufacturing and systems — a Traditional Chinese study guide**
 
-46 chapters and 3 appendices connecting engineering fundamentals, semiconductor devices and fabrication, circuits, systems, MEMS, and biosensing. Includes worked examples, practice solutions, academic references, and an offline HTML edition. The textbook is written in Traditional Chinese.
+46 chapters and 3 appendices, now navigated around the semiconductor lifecycle. Engineering fundamentals support chip design, fabrication, packaging, test, and system integration. The roadmap distinguishes existing material from gaps still to be developed; this is not yet a complete RTL-to-GDS or analog tape-out course. Includes worked examples, solutions, primary references, and an offline HTML edition.
 
-繁體中文跨學科教材：46章正文與3個附錄。每章包含先備知識、模型與假設、自設例題、練習及解答，參考資料列在相應位置。面向理工相關科系的大學基礎課程銜接與自學，不宣稱取代完整系所課程。
+繁體中文教材，面向理工相關科系。主線是半導體產業的「需求／架構 → 晶片設計與驗證 → 製造 → 封裝測試 → 系統」，數理、電路與元件物理作支援。46 章與 3 個附錄保留；本階段先重整閱讀入口，不把導覽改名當成所有設計流程已補齊。每章仍包含先備、模型與假設、例題、練習解答及參考資料。
 
 ## 開始閱讀
 
-- **瀏覽完整目錄：**[46 章正文與 3 個附錄](content/README.md)，按數理、元件、製程、品質、電路、專題與感測分組。
+- **公開網站：**[Silicon to Systems](https://semiconductor-manufacturing-guide.fond-creek-8076.chatgpt.site)，先看產業路線，再依問題回查先備。
+- **產業學習路線：**[六個環節、現有內容與缺口](content/learning-paths.md)，附所有原章節的保留與新定位對照。
+- **依原章號查閱：**[46 章正文與 3 個附錄](content/README.md)，保留原分組與全部連結。
 - **直接在 GitHub 閱讀：**[從工程學習地圖開始](content/01-engineering-map.md)，或查看[完整教材文字版](dist/book.md)。
 - **下載離線 HTML：**[下載 ZIP](dist/engineering-textbook-html.zip?raw=true)，解壓縮後開啟 `index.html`，不需安裝開發工具；包含搜尋、深淺色與分章閱讀。
 - **先了解品質與限制：**[檢查紀錄](research/quality-report.md)與[機器驗證結果](research/verification.json)。程式檢查不代表外部專家審查或實體實驗驗證。
@@ -38,13 +40,18 @@
 npm ci
 npm run build
 npm run check
+npm run check:roadmap
+npm run check:navigation
 ```
 
 新正文為 `content/01-*.md` 至 `content/46-*.md`；附錄為90–92。`scripts/build-book.mjs` 只選取這些平面檔案，使用本機 KaTeX 將公式預先排版，沒有外部CDN或分析追蹤。`scripts/check-book.mjs` 驗證章節結構、內部檔案與錨點、公式錯誤、JavaScript語法及教學模型數值，結果寫入 `research/verification.json`。這些檢查不等於同儕審查或真實瀏覽器視覺驗收。
 
+路線單一資料來源是 `src/learning-paths.mjs`，建置同時產生網頁導覽及 `content/learning-paths.md`，避免 GitHub 與網頁的定位清單不一致。`npm run check:roadmap` 核對第一階段相對於固定基線的正文、圖稿、章節網址、正文 HTML、合冊及搜尋保留；往後正文正式改版時，應另立新階段基線，不放寬本次保留紀錄。
+
 ## 產出
 
-- `dist/index.html`：學習地圖與分章入口。
+- `dist/index.html`：產業主線與原章序入口。
+- `dist/roadmap.html`：六環節、先備、交付／驗證與內容邊界。
 - `dist/all.html`：完整閱讀與列印版。
 - `dist/book.md`：合併後的文字與公式原始檔。
 - `dist/engineering-textbook-html.zip`：可解壓後直接開啟的離線包。

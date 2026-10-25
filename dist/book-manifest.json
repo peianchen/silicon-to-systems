@@ -1,10 +1,10 @@
 {
-  "title": "半導體・電子・電機工程",
+  "title": "Silicon to Systems：晶片設計、製造與系統",
   "chapters": 46,
   "appendices": 3,
   "hanCharacters": 86451,
   "equations": 1677,
-  "generatedPages": 52,
+  "generatedPages": 53,
   "documents": [
     {
       "file": "01-engineering-map.md",

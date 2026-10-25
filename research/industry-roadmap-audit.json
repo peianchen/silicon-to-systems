@@ -1,0 +1,318 @@
+{
+  "phase": "industry-navigation-only",
+  "baseline": "96b41d18f89cf3e897e9bc7c5b24519d7ab3c8f2",
+  "numericSourceDocumentsUnchanged": 49,
+  "sourceFiguresUnchanged": 22,
+  "chapterURLsUnchanged": 49,
+  "renderedChapterBodiesUnchanged": 49,
+  "fullBookBodyAndOrderUnchanged": true,
+  "mergedMarkdownUnchanged": true,
+  "searchIndexUnchanged": true,
+  "manifestBodyCountsUnchanged": true,
+  "lifecycleStages": 6,
+  "supportRoutes": 5,
+  "workflowSourceGroups": 6,
+  "generatedGitHubGuideMatches": true,
+  "offlineRoadmapMatches": true,
+  "invalidRouteReferenceAndUnmappedChapterRejected": true,
+  "browserQA": "Unavailable: cua returned apps=[], browsers=[] on 2026-10-25. No visual or interaction certification.",
+  "preserved": [
+    {
+      "file": "content/01-engineering-map.md",
+      "sha256": "aca91e79feb0e328a0d3a35b585defa7af180d583ace0d29587dd5a0372afdd5"
+    },
+    {
+      "file": "content/02-engineering-mathematics.md",
+      "sha256": "e7c5f9fc41967f32f32d49c5b32470ffe12626de6874fa5cd16ada2822145a88"
+    },
+    {
+      "file": "content/03-complex-phasors.md",
+      "sha256": "67f570616de350206150ac021cdcf95190d8ca775164c2d539f3ba7521efff8a"
+    },
+    {
+      "file": "content/04-circuit-analysis.md",
+      "sha256": "5c761fa9e7716bd234464687d2f7c08b84a72a0d11a11561cda92b6a659aae6f"
+    },
+    {
+      "file": "content/05-transients-filters.md",
+      "sha256": "be765171ad5ed1bb474bb9b40863577b98fc1af6a77e813c2a6671a14fe17324"
+    },
+    {
+      "file": "content/06-signals-sampling.md",
+      "sha256": "867e9c3ee8c74be891a63e9b349aa82e54ea37dedde1ba1f4aad2b1d75140679"
+    },
+    {
+      "file": "content/07-fields-transmission-lines.md",
+      "sha256": "1d767dce073365fb7691afc126700e2bff8aba59d5779260a3cd9021144cb36c"
+    },
+    {
+      "file": "content/08-solid-state-bands.md",
+      "sha256": "a06d5339b01837b11cdff5ed8af6e2064723e07a393238067f1c6a613c6f7c45"
+    },
+    {
+      "file": "content/09-carriers-transport.md",
+      "sha256": "50f3b2505445316ef4404bec9e406b1b80d4b9e455281361763a2e5298e650a8"
+    },
+    {
+      "file": "content/10-pn-junctions.md",
+      "sha256": "cef26a897a5f3a484f40d998100d42905c891ab32bb7e775ef9db5edecf96303"
+    },
+    {
+      "file": "content/11-bipolar-transistors.md",
+      "sha256": "88568174adde765ddc4ea2edbceb61a433db239df4d297680f13b360401736d1"
+    },
+    {
+      "file": "content/12-mos-capacitor-mosfet.md",
+      "sha256": "5ab41fa606e44dec02c5a44bee0e0973ec2e454814d71698de47605f25bbe04e"
+    },
+    {
+      "file": "content/13-advanced-power-devices.md",
+      "sha256": "1646630ad9d5b6a4b874092b572dfb2b3f73ac14cb881a610ef0f27138bdcabb"
+    },
+    {
+      "file": "content/14-crystal-substrates.md",
+      "sha256": "5cab15e51dd3ff97e1a90e1188828a410a79cab851eae01565d080c570fabc63"
+    },
+    {
+      "file": "content/15-lithography-patterning.md",
+      "sha256": "d676ab7cdab28068725a8889bb3bc499f1ab22effedfbfbfc6e9331b66624a9f"
+    },
+    {
+      "file": "content/16-films-surfaces.md",
+      "sha256": "b31995a264baeb5cfb156c08a72a39d4a03299918deb5869a85a3011c219c11b"
+    },
+    {
+      "file": "content/17-etch-plasma.md",
+      "sha256": "f6d97b9de474930c462f0eda87cf9aa1634ea5b7d39e5646a5df1235237bb351"
+    },
+    {
+      "file": "content/18-doping-thermal-budget.md",
+      "sha256": "ad1198e1c67f6bd565984a73624fb6df9c400883fd2002128a169fbc810a167c"
+    },
+    {
+      "file": "content/19-cleaning-cmp.md",
+      "sha256": "9d143ed2ad06ce90719479b2d58159406e92b5b4f38fc0ee6dafdfd38380057a"
+    },
+    {
+      "file": "content/20-interconnect-cmos.md",
+      "sha256": "9ae580a39323bff15cadc5db900bd4be2c64fc0e7d6e4ee2b6ab992d25fe682b"
+    },
+    {
+      "file": "content/21-memory-technologies.md",
+      "sha256": "c581dc0f4fe180a51bb442f018543af385e80ed47283a76b4cf235b740be177a"
+    },
+    {
+      "file": "content/22-metrology-doe.md",
+      "sha256": "fae5c687dbd80ccb9f9d874e27d21ce90457a6e78b4d1e8b6785f0fced1fde0c"
+    },
+    {
+      "file": "content/23-statistics-yield.md",
+      "sha256": "c2f3ed0793fda2a4628533736fcb1d7118458b63f0d0039e76f4734bc049f497"
+    },
+    {
+      "file": "content/24-control-mes.md",
+      "sha256": "2627288fa3c973ebe34005571aa3d71da63aba031a643c88e541a93ad9502e42"
+    },
+    {
+      "file": "content/25-reliability-change.md",
+      "sha256": "67f2790e6b139e619807644a2a3014c5733a14aeb30193c10322995a716d87d4"
+    },
+    {
+      "file": "content/26-analog-small-signal.md",
+      "sha256": "2d1a575ba0cd835c5be4262d50f7c3a009361b15af2cc1ad2906de0121014fed"
+    },
+    {
+      "file": "content/27-opamps-feedback.md",
+      "sha256": "bdea119b7dbbe567f61a59dbc901a29aa6658c5bc02d81f19c007ea695858a98"
+    },
+    {
+      "file": "content/28-digital-cmos.md",
+      "sha256": "866ca71ae6a4c30ebe5a97eb40750bf5cfda38c7ab79981ae8ec97f290ab5e3c"
+    },
+    {
+      "file": "content/29-hdl-timing-cdc.md",
+      "sha256": "9944183d76ea57cff627052f1e52d302aaa07e807f1c9ed641a06081e87f52c8"
+    },
+    {
+      "file": "content/30-data-converters.md",
+      "sha256": "2f9e0074c6ffba2eb6b01d37d07a8629788390a02f1ca60880addd2de9a2c3d0"
+    },
+    {
+      "file": "content/31-power-electronics.md",
+      "sha256": "9250dbd12e5f9d2a8c5d04221e6c633f8ea411f583db24a9ebc16ebde7a2ad98"
+    },
+    {
+      "file": "content/32-microcontrollers-firmware.md",
+      "sha256": "85fb164bc433b6d61f3791576cf03990c83959010ee0ceb77e05b1bd1546be8b"
+    },
+    {
+      "file": "content/33-test-dft.md",
+      "sha256": "e5e1ab82b7913ce2f9b0aaba6d79b01bb0be86de0dcb8d3812315416b8461c63"
+    },
+    {
+      "file": "content/34-packaging-chiplets.md",
+      "sha256": "26efeae0dcbb1e4f4115fcfcffb3d9a8f666c6f869079d725f26ed61814ee443"
+    },
+    {
+      "file": "content/35-rf-opto-sensors.md",
+      "sha256": "e979d50de51b5bdf27d88a663f92f56464b2876a96bc57bac52b3d84c500aaa3"
+    },
+    {
+      "file": "content/36-measurement-lab.md",
+      "sha256": "1d8302afd4f06609928b47eadce48b4a8b8c2c2f56b1bd3dcaa786560180fb44"
+    },
+    {
+      "file": "content/37-project-sensor-data.md",
+      "sha256": "7b2b8ba58dc0a5efb8ed963023a080969d076cb0c1e61e2975113c1bcffcaeb2"
+    },
+    {
+      "file": "content/38-project-yield-diagnosis.md",
+      "sha256": "8aa21acbb548e3d061df546a188b7d4332274e66007134b5b3992f0370f7d590"
+    },
+    {
+      "file": "content/39-curriculum-study-plan.md",
+      "sha256": "563f4af9806cb378330b575bf95c7cc1a0f8560b6e2c9b501c21f3bad145a5ed"
+    },
+    {
+      "file": "content/40-design-tradeoffs.md",
+      "sha256": "3d20c9651b1cdf9491579287e018903e727658ce5a9a231c523221dcfc81c6b7"
+    },
+    {
+      "file": "content/41-mems-mechanics.md",
+      "sha256": "ac50de1e5a810a0580138bf064913e7955de2b2d3921e0539e51025cfdd8b26f"
+    },
+    {
+      "file": "content/42-microfluidics.md",
+      "sha256": "fd8674307e0991b0f7d177d944eb46e9b5bb6cb370d01c675b8d152a5df9fe10"
+    },
+    {
+      "file": "content/43-surface-recognition.md",
+      "sha256": "733e3e48c791e60d4b834568f27da797c7bb0ecb7519a4407cd055a50911a3a5"
+    },
+    {
+      "file": "content/44-biofet-interfaces.md",
+      "sha256": "af532c9310805acbf5bdf6a1b64c3d46227ddac4c2aa1957f9238d53762c0939"
+    },
+    {
+      "file": "content/45-sensing-modalities.md",
+      "sha256": "f2ee7be798101fab2a42cee5df32604b7d8d174935a97dd6ee85631045945689"
+    },
+    {
+      "file": "content/46-sensor-validation.md",
+      "sha256": "2f6aaa4e50da0bcb15c2890ad2740d382e0276e8319bf11fd892dc46e36b8f55"
+    },
+    {
+      "file": "content/90-symbols.md",
+      "sha256": "375f94e86d52d49ab173aaac8b52ddd371a708e42e7b7e3615793afdf2cfc084"
+    },
+    {
+      "file": "content/91-glossary.md",
+      "sha256": "171df51c1db8783b380d19e23182b55ed861077d73977536c3155d7cb94500e0"
+    },
+    {
+      "file": "content/92-bibliography.md",
+      "sha256": "9f2b405473c9a8acfd2a193e9a59da134be8d4e2ed2fb0a95fac990caa3ff242"
+    },
+    {
+      "file": "assets/figures/unit01-duty-cycle.svg",
+      "sha256": "f5ac714f30f2fb7226786681916aecca3e55767c267e9eaffc4f04fb6f823b80"
+    },
+    {
+      "file": "assets/figures/unit01-front-back.svg",
+      "sha256": "305d6c95e48e3e2bd6e7f2e7629455332394a0f41cc73f07a894269b2575c40d"
+    },
+    {
+      "file": "assets/figures/unit01-lifecycle.svg",
+      "sha256": "3b211281162ab562e3c188d7d10993334f36803eca852cdc647ec3a3326418d7"
+    },
+    {
+      "file": "assets/figures/unit01-process-control.svg",
+      "sha256": "d638b44660ad389f15c69a62b735feb7041b85d65f58f0715dcc79d9d67f3a38"
+    },
+    {
+      "file": "assets/figures/unit01-requirement-evidence.svg",
+      "sha256": "71a13f0b293f389afd4d17ab70743052a908a5c3b3336c8500e7822ef3c6db6e"
+    },
+    {
+      "file": "assets/figures/unit01-signal-chain.svg",
+      "sha256": "8296be2f81f90e0ba6a1ede27fc1e189ee5dab957266a52ab1f949e7229fe41d"
+    },
+    {
+      "file": "assets/figures/unit01-system-map.svg",
+      "sha256": "3a2cc49661767e99ab848658b2555a80531cb418418260ea496118797e19ca64"
+    },
+    {
+      "file": "assets/figures/unit01-wafer-die-package.svg",
+      "sha256": "9a5343d77d4d26404b6a73d02155bbda085ee43a0168e39eb555b85ea01f4dc9"
+    },
+    {
+      "file": "assets/figures/unit02-density-dose.svg",
+      "sha256": "19e25126a96e7160d7def7d4dbeb190b717020066674473154148430f48e7ea7"
+    },
+    {
+      "file": "assets/figures/unit02-local-linear.svg",
+      "sha256": "1cdfc4ff11814b7913ad7197037b10d73308378be5ceac955aff2077a8cb8383"
+    },
+    {
+      "file": "assets/figures/unit02-node-matrix.svg",
+      "sha256": "96764b9aa9a1f1893708664e262346e70812dbe1e8fd8d6fcdd4e0af3e7a7866"
+    },
+    {
+      "file": "assets/figures/unit02-rc-response.svg",
+      "sha256": "538494fbb5ca1f2da83c600d5eaf633f4d877fece6cbabdc5eaa20946f85ded8"
+    },
+    {
+      "file": "assets/figures/unit02-sampled-data.svg",
+      "sha256": "0e7c1dcb64245e24920a1b96bd5381a3d1d7dd10eb8558bac1fc76569e587766"
+    },
+    {
+      "file": "assets/figures/unit02-settling-margin.svg",
+      "sha256": "819b51370cd0883bdbd1e91f3e2409a2a7b4102147ccf39358df0fb5d316fbe4"
+    },
+    {
+      "file": "assets/figures/unit02-slope-charge.svg",
+      "sha256": "c45b4220a18f2f4382d82826048f6b6213b0f767ef877d9e7836bf05d4fcfad6"
+    },
+    {
+      "file": "assets/figures/unit03-complex-plane.svg",
+      "sha256": "2285fd88c2d2e002dc09d0cd0695e9337c3c4d580d15daa62d3a7f5f5e15fdae"
+    },
+    {
+      "file": "assets/figures/unit03-frequency-response.svg",
+      "sha256": "9fa6ddeb23909918c1646e30cd8e758b144cbd4da018c8ff0bceff863476e961"
+    },
+    {
+      "file": "assets/figures/unit03-phasor-wave.svg",
+      "sha256": "baf56275af36dbeb1d03a393ead74cc4089fedd4b2f3295a8cea7920ac6c65b8"
+    },
+    {
+      "file": "assets/figures/unit03-power.svg",
+      "sha256": "9ccfc43539a071d2701cd0e9d559ce4c7caa423948f09177af6d1798e73c1bb2"
+    },
+    {
+      "file": "assets/figures/unit03-rc-impedance.svg",
+      "sha256": "1ab8da2ba54fdcd487c06cf37e9bb63b4fe08f9b58aee2ff9717278e204e5079"
+    },
+    {
+      "file": "assets/figures/unit03-source-load.svg",
+      "sha256": "030a82ea620a29536c39730a95c6c54e5b7d0daad9cda0993b856449f12e3900"
+    },
+    {
+      "file": "assets/figures/unit03-voltage-sum.svg",
+      "sha256": "d8bd24aa40f66cea8e59e1f08517025b0675a91199e73a1da353d1e5040bdf96"
+    },
+    {
+      "file": "dist/book.md",
+      "sha256": "e7e15852b82dbb0c97b7d2c3fa70dd697402269600ba0bf5fe0ccbbcb97b5568"
+    },
+    {
+      "file": "dist/assets/search-index.js",
+      "sha256": "c6355e791ed81817b6b369dda39bb9fbdca28028d366145a52ab68b89dade963"
+    },
+    {
+      "file": "src/models.js",
+      "sha256": "9fc60816bcda508786a97091aad221fec194d24ed6487fa1fca32663fc0b04c7"
+    }
+  ],
+  "errors": []
+}

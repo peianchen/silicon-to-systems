@@ -19,6 +19,21 @@
   const closeMenu=()=>{setMenu(false);menu.focus();};
   shade.addEventListener('click',closeMenu);
   $('#menuClose').addEventListener('click',closeMenu);
+  sidebar.addEventListener('click', e => {
+    if (!narrow.matches || !document.body.classList.contains('menu-open') || e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    const link = e.target.closest('a[href]');
+    if (!link || !sidebar.contains(link) || link.target === '_blank' || link.hasAttribute('download')) return;
+    const destination = new URL(link.href, location.href);
+    if (destination.origin !== location.origin) return;
+    setMenu(false);
+    if (destination.pathname === location.pathname && destination.search === location.search) {
+      let target = $('#main');
+      try { target = document.getElementById(decodeURIComponent(destination.hash.slice(1))) || target; } catch {}
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({preventScroll:true});
+    }
+    // Preserve native link navigation, including the hash scroll and browser history.
+  });
   narrow.addEventListener('change', () => setMenu(false));
   setMenu(false);
   document.addEventListener('keydown', e => {

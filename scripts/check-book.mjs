@@ -6,6 +6,7 @@ import vm from 'node:vm';
 import {spawnSync} from 'node:child_process';
 import {cases} from './numerical-cases.mjs';
 import {Marked} from 'marked';
+import {industryStages,supportPaths,validateLearningPaths,roadmapMarkdown} from '../src/learning-paths.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dist=path.join(root,'dist');
 const draft=process.argv.includes('--draft');
@@ -13,6 +14,9 @@ const manifest=JSON.parse(await readFile(path.join(dist,'book-manifest.json'),'u
 if(!draft){assert.equal(manifest.chapters,46);assert.equal(manifest.appendices,3);}
 const errors=[],chapterReview=[],numbers=[];
 const must=(test,message)=>{if(!test)errors.push(message);};
+const routeDocs=manifest.documents.map(doc=>({...doc,num:Number(doc.file.slice(0,2)),id:doc.file.slice(0,-3),fullTitle:doc.title,name:doc.title.replace(/^第\s*\d+\s*章[\s　]*/,'')}));
+validateLearningPaths(routeDocs);
+must(await readFile(path.join(root,'content','learning-paths.md'),'utf8')===roadmapMarkdown(routeDocs),'Generated learning-path guide is stale');
 const markdownParser=new Marked();
 const chapterFigures=new Map();
 function markdownImages(md){
@@ -77,6 +81,9 @@ for(const doc of manifest.documents){
 }
 async function walk(dir){let all=[];for(const d of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,d.name);all.push(...d.isDirectory()?await walk(p):[p]);}return all;}
 const files=await walk(dist),htmlFiles=files.filter(f=>f.endsWith('.html'));
+must(htmlFiles.length===manifest.generatedPages,'Manifest page count differs from output');
+const roadmapHTML=await readFile(path.join(dist,'roadmap.html'),'utf8');
+for(const route of [...industryStages,...supportPaths])must(roadmapHTML.includes(`id="${route.id}"`),`Roadmap missing ${route.id}`);
 const pages=new Map();
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#39;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 let localLinks=0;
@@ -165,10 +172,12 @@ for(const file of files.filter(f=>f.endsWith('.css'))){
     try{await stat(f);}catch{errors.push(`Missing CSS resource ${m[1]}`);}
   }
 }
-for(const f of ['src/book.js','src/models.js','scripts/build-book.mjs']){
+for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs']){
   const result=spawnSync(process.execPath,['--check',path.join(root,f)],{encoding:'utf8'});
   must(result.status===0,`${f}:JavaScript syntax ${result.stderr}`);
 }
+const navigationTest=spawnSync(process.execPath,[path.join(root,'scripts/test-navigation.mjs')],{encoding:'utf8'});
+must(navigationTest.status===0,`Navigation regression: ${navigationTest.stderr}`);
 function near(name,actual,expected,tolerance=1e-6){
   const passed=Number.isFinite(actual)&&Math.abs(actual-expected)<=tolerance*Math.max(1e-15,Math.abs(expected));
   numbers.push({name,actual,expected,passed});must(passed,`Numerical check: ${name}: ${actual} != ${expected}`);
@@ -242,6 +251,7 @@ const indexContext=vm.createContext({window:{}});vm.runInContext(await readFile(
 must(indexContext.window.BOOK_INDEX.length===manifest.documents.length,'Search index missing chapters');
 for(const item of indexContext.window.BOOK_INDEX)must(files.includes(path.join(dist,item.url)),`Search index broken ${item.url}`);
 const report={offlineZipIntegrity:zipTest.status===0,searchIndexEntries:indexContext.window.BOOK_INDEX.length,mode:draft?'draft':'release',chapters:manifest.chapters,appendices:manifest.appendices,pages:htmlFiles.length,equations:manifest.equations,localLinksChecked:localLinks,imageReferencesChecked:imageReferences,sourceFigureFilesChecked:sourceFigures.length,externalReferenceURLs:external.size,numericalChecks:numbers.length,numericalResults:numbers,chapterStructure:chapterReview,errors,browserQA:'Unavailable: no enabled browsers in cua. Static structure, links, equation rendering and model unit tests only; no visual certification.'};
+report.navigationStubCases=navigationTest.status===0?JSON.parse(navigationTest.stdout).navigationStubCases:0;
 await writeFile(path.join(root,'research','verification.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({...report,numericalResults:undefined,chapterStructure:undefined},null,2));
 if(errors.length)process.exitCode=1;
