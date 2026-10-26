@@ -49,11 +49,13 @@ for(const doc of manifest.documents){
     must(adcIntro>=0&&adcPractice>adcIntro,`${doc.file}:ADC prerequisites must precede practice`);
   }
   if(n===2){
-    must(new Set(figures.map(f=>f.href)).size>=7,doc.file+':fewer than seven distinct figures');
-    must((md.match(/\*\*練習 \d+。/g)||[]).length===12,doc.file+':expected twelve exercises');
-    must((md.match(/\*\*解答。\*\*/g)||[]).length===12,doc.file+':expected twelve solutions');
-    const captions=[...md.matchAll(/^圖 2-(\d+)　/gm)].map(m=>Number(m[1]));
-    must(JSON.stringify(captions)===JSON.stringify([1,2,3,4,5,6,7]),doc.file+':figure captions not consecutive');
+    must(new Set(figures.map(f=>f.href)).size===9,doc.file+':expected nine distinct figures');
+    const formalPractice=md.split('## 練習與完整參考解答\n')[1]?.split('\n## 單元回顧與下一步')[0]||'';
+    const questionNumbers=[...formalPractice.matchAll(/\*\*練習 (\d+)。/g)].map(m=>Number(m[1]));
+    must(JSON.stringify(questionNumbers)===JSON.stringify(Array.from({length:16},(_,i)=>i+1)),doc.file+':expected unique ordered exercises 1–16');
+    must((formalPractice.match(/\*\*解答。\*\*/g)||[]).length===16,doc.file+':expected sixteen formal solutions');
+    const captions=[...md.matchAll(/^圖 2-(\d+[A-Z]?)　/gm)].map(m=>m[1]);
+    must(JSON.stringify(captions)===JSON.stringify(['1','2','3','3A','4','5','6','7','8']),doc.file+':old/new figure captions out of order');
     const order=['## 1. 先把問題','## 2. 從變化率','## 3. 把守恆律','## 4. 增加節點','## 5. 儀器只有','## 6. 從理想值','## 練習與完整參考解答'].map(t=>md.indexOf(t));
     must(order.every((v,i)=>v>=0&&(i===0||v>order[i-1])),doc.file+':reading sequence missing or out of order');
   }
@@ -174,7 +176,7 @@ for(const file of files.filter(f=>f.endsWith('.css'))){
     try{await stat(f);}catch{errors.push(`Missing CSS resource ${m[1]}`);}
   }
 }
-for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs','scripts/draw-unit01-lifecycle.mjs','scripts/audit-unit01-lifecycle-expansion.mjs']){
+for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs','scripts/draw-unit01-lifecycle.mjs','scripts/audit-unit01-lifecycle-expansion.mjs','scripts/draw-unit02-industry.mjs','scripts/audit-unit02-industry-expansion.mjs']){
   const result=spawnSync(process.execPath,['--check',path.join(root,f)],{encoding:'utf8'});
   must(result.status===0,`${f}:JavaScript syntax ${result.stderr}`);
 }
@@ -204,6 +206,24 @@ near('01 exercise 10 revised schedule ms',1+.6+.3,1.9);
 near('01 exercise 10 remaining time ms',2-(1+.6+.3),.1);
 near('01 exercise 10 with extra task ms',1+.6+.3+.2,2.1);
 near('01 exercise 10 over budget ms',(1+.6+.3+.2)-2,.1);
+near('02 industry quantization interval mV',2048/2**10,2);
+near('02 industry settling allocation mV',2048/2**11,1);
+near('02 industry nominal time constant ns',2500*20e-12*1e9,50);
+near('02 industry slow time constant ns',3000*22e-12*1e9,66);
+near('02 industry nominal minimum ns',50*Math.log(2048),381.23094930797);
+near('02 industry slow minimum ns',66*Math.log(2048),503.22485308652);
+near('02 industry nominal 400 ns error mV',2048*Math.exp(-400/50),.687027461944);
+near('02 industry slow 400 ns error mV',2048*Math.exp(-400/66),4.777956408831);
+near('02 industry slow 550 ns error mV',2048*Math.exp(-550/66),.492276687707);
+near('02 industry slow 500 ns error mV',2048*Math.exp(-500/66),1.050074811209);
+near('02 industry time constant limit ns',400/Math.log(2048),52.461637850508);
+near('02 industry resistance limit kohm',400/Math.log(2048)/22,2.384619902296);
+near('02 industry eleven-bit minimum ns',50*Math.log(4096),415.888308335967);
+near('02 industry extra-bit time ns',50*Math.log(2),34.657359027997);
+near('02 industry geometric resistance ohm',3e-8*100e-6/(2e-6*.2e-6),7.5);
+near('02 industry reduced geometry ratio',1/(.95*.9),1.169590643275);
+near('02 industry 5 ms allowable tau ms',5/Math.log(100),1.085736204758);
+near('02 industry 6 ms allowable tau ms',6/Math.log(100),1.302883445710);
 near('40 deliverable dies',600*Math.exp(-.12)*.98*.99,516.29412462);
 near('40 delivered cost',(5000+1.5*600*Math.exp(-.12))/(600*Math.exp(-.12)*.98*.99),11.23047526);
 near('41 beam stiffness N/m',160e9*16e-6*(2e-6)**3/(4*(160e-6)**3),1.25);

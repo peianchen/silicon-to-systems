@@ -5,12 +5,12 @@
   "chapters": 46,
   "appendices": 3,
   "pages": 53,
-  "equations": 1679,
-  "localLinksChecked": 4267,
-  "imageReferencesChecked": 48,
-  "sourceFigureFilesChecked": 24,
-  "externalReferenceURLs": 153,
-  "numericalChecks": 253,
+  "equations": 1727,
+  "localLinksChecked": 4275,
+  "imageReferencesChecked": 52,
+  "sourceFigureFilesChecked": 26,
+  "externalReferenceURLs": 157,
+  "numericalChecks": 271,
   "numericalResults": [
     {
       "name": "03 quadrant angle deg",
@@ -1339,6 +1339,114 @@
       "passed": true
     },
     {
+      "name": "02 industry quantization interval mV",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "02 industry settling allocation mV",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "02 industry nominal time constant ns",
+      "actual": 50,
+      "expected": 50,
+      "passed": true
+    },
+    {
+      "name": "02 industry slow time constant ns",
+      "actual": 66.00000000000001,
+      "expected": 66,
+      "passed": true
+    },
+    {
+      "name": "02 industry nominal minimum ns",
+      "actual": 381.2309493079699,
+      "expected": 381.23094930797,
+      "passed": true
+    },
+    {
+      "name": "02 industry slow minimum ns",
+      "actual": 503.2248530865203,
+      "expected": 503.22485308652,
+      "passed": true
+    },
+    {
+      "name": "02 industry nominal 400 ns error mV",
+      "actual": 0.6870274619443443,
+      "expected": 0.687027461944,
+      "passed": true
+    },
+    {
+      "name": "02 industry slow 400 ns error mV",
+      "actual": 4.777956408831211,
+      "expected": 4.777956408831,
+      "passed": true
+    },
+    {
+      "name": "02 industry slow 550 ns error mV",
+      "actual": 0.4922766877071648,
+      "expected": 0.492276687707,
+      "passed": true
+    },
+    {
+      "name": "02 industry slow 500 ns error mV",
+      "actual": 1.0500748112089866,
+      "expected": 1.050074811209,
+      "passed": true
+    },
+    {
+      "name": "02 industry time constant limit ns",
+      "actual": 52.461637850507756,
+      "expected": 52.461637850508,
+      "passed": true
+    },
+    {
+      "name": "02 industry resistance limit kohm",
+      "actual": 2.3846199022958072,
+      "expected": 2.384619902296,
+      "passed": true
+    },
+    {
+      "name": "02 industry eleven-bit minimum ns",
+      "actual": 415.88830833596717,
+      "expected": 415.888308335967,
+      "passed": true
+    },
+    {
+      "name": "02 industry extra-bit time ns",
+      "actual": 34.657359027997266,
+      "expected": 34.657359027997,
+      "passed": true
+    },
+    {
+      "name": "02 industry geometric resistance ohm",
+      "actual": 7.5,
+      "expected": 7.5,
+      "passed": true
+    },
+    {
+      "name": "02 industry reduced geometry ratio",
+      "actual": 1.1695906432748537,
+      "expected": 1.169590643275,
+      "passed": true
+    },
+    {
+      "name": "02 industry 5 ms allowable tau ms",
+      "actual": 1.0857362047581294,
+      "expected": 1.085736204758,
+      "passed": true
+    },
+    {
+      "name": "02 industry 6 ms allowable tau ms",
+      "actual": 1.3028834457097553,
+      "expected": 1.30288344571,
+      "passed": true
+    },
+    {
       "name": "40 deliverable dies",
       "actual": 516.2941246217918,
       "expected": 516.29412462,
@@ -1539,8 +1647,8 @@
     },
     {
       "file": "02-engineering-mathematics.md",
-      "hanCharacters": 10840,
-      "references": 11
+      "hanCharacters": 14685,
+      "references": 18
     },
     {
       "file": "03-complex-phasors.md",
