@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="815" viewBox="0 0 1200 815" role="img" aria-labelledby="title desc" data-figure-style="sts-flat-v1">
 <title id="title">前段與後段：分類與功能剖面</title>
-<desc id="desc">分圖a區分晶圓製造內的FEOL、MOL、BEOL與產業的組裝封裝後段。分圖b用簡化平面電晶體及接點、三層金屬互連示意功能位置，非真實製程堆疊或比例圖；局部互連邊界依技術而異。</desc>
+<desc id="desc">分圖1區分晶圓製造內的FEOL、MOL、BEOL與產業的組裝封裝後段。分圖2用簡化平面電晶體及接點、三層金屬互連示意功能位置，非真實製程堆疊或比例圖；局部互連邊界依技術而異。</desc>
 <defs>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M1 1 L9 5 L1 9" fill="none" stroke="#2e3d59" stroke-width="1.3"/>

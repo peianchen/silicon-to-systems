@@ -24,9 +24,11 @@
 - [第01單元：從需求到晶片](content/01-engineering-map.md)：10張原創SVG、原3組完整算例加介面時間案例、12題附解答練習，另有需求—方案—證據整合任務。補足架構分割、類比／數位設計、簽核投片與矽後驗證；原8圖、8題和有效內容保留。見[產業主線編修](research/unit-01-lifecycle-editorial.md)、[來源範圍](research/unit-01-lifecycle-sources.md)與[保留稽核](research/unit-01-lifecycle-audit.json)。
 - [第02單元：工程數學與量綱](content/02-engineering-mathematics.md)：9張原創SVG、A–F六組具名算例、16題附解答練習。保留5/6 ms等待策略，另加獨立ADC取樣建立案例：由半LSB分配、最短取樣窗與相容參數上界，反推設計限制並規劃證據。原7圖、12題、推導及知識點保留，見[產業連結編修](research/unit-02-industry-editorial.md)、[來源範圍](research/unit-02-industry-sources.md)與[保留稽核](research/unit-02-industry-audit.json)；先前[擴編紀錄](research/unit-02-editorial.md)與[歷史稽核](research/unit-02-expansion-audit.json)原樣留存。
 
-- [第03單元：複數、相量與頻域](content/03-complex-phasors.md)：7張原創SVG、12題附完整解答練習。從RC訊號保留需求，串起相量、阻抗、功率、頻率響應、三方案容差與量測判讀；原算例及兩題完整保留，見[編修紀錄](research/unit-03-editorial.md)、[來源查證](research/unit-03-sources.md)與[保留／圖形座標稽核](research/unit-03-expansion-audit.json)。
+- [第03單元：複數、相量與頻域](content/03-complex-phasors.md)：9張原創SVG、16題附完整解答練習。保留相量、阻抗、功率、頻率響應、三方案容差與量測判讀；補上晶片前端的寄生／探棒電容預算，以及封裝供電的單頻阻抗判據。原7圖、12題、完整算例與來源保留，見[產業連結編修](research/unit-03-industry-editorial.md)、[來源範圍](research/unit-03-industry-sources.md)及[本輪保留／座標稽核](research/unit-03-industry-audit.json)；先前[編修紀錄](research/unit-03-editorial.md)及[歷史稽核](research/unit-03-expansion-audit.json)仍保留。
 
 第四章以後尚未完成同等擴編，會逐單元校訂，不把全書現況誤稱為每章皆已圖解完成。
+
+2026-10-26先依既定十項要求[複核第一、二章](research/unit-01-02-requirements-review.md)，確認無必修阻擋後才續第三章。第二章練習10補明相容端點條件；第一章一圖的正負號字級及兩圖的替代分圖編號精確化。未刪內容或減圖，修正另立明確對照，不覆寫歷史稽核。
 
 第一、二章另完成[逐節銜接補強](research/chapter-transitions.md)：補上小節之間的問題承接與回顧，保留原有知識、例題、練習和圖表。
 
@@ -40,13 +42,13 @@
 npm ci
 npm run build
 npm run check
-npm run check:unit02-industry
+npm run check:unit03-industry
 npm run check:navigation
 ```
 
 新正文為 `content/01-*.md` 至 `content/46-*.md`；附錄為90–92。`scripts/build-book.mjs` 只選取這些平面檔案，使用本機 KaTeX 將公式預先排版，沒有外部CDN或分析追蹤。`scripts/check-book.mjs` 驗證章節結構、內部檔案與錨點、公式錯誤、JavaScript語法及教學模型數值，結果寫入 `research/verification.json`。這些檢查不等於同儕審查或真實瀏覽器視覺驗收。
 
-路線單一資料來源是 `src/learning-paths.mjs`，建置同時產生網頁導覽及 `content/learning-paths.md`，避免 GitHub 與網頁的定位清單不一致。現行 `npm run check:unit02-industry` 以ced34ec為固定基線，核對第二章204個原區塊、12題、7圖、10條引用及其他48篇正文，另核對新圖實際座標、原網址／錨點與舊數值結果。歷史 `npm run check:unit01-lifecycle` 適用第一章完成時的ced34ec，`npm run check:roadmap` 適用導覽階段209baae；後續章節已擴編，不能在新版執行歷史腳本並期待其他正文全不變。舊腳本、固定基線與結果原樣保留，不為新版本放寬舊驗收。
+路線單一資料來源是 `src/learning-paths.mjs`，建置同時產生網頁導覽及 `content/learning-paths.md`，避免 GitHub 與網頁的定位清單不一致。現行 `npm run check:unit03-industry` 以2708488為固定基線，核對第三章178個原區塊（僅2處指代／圖數精確化）、12題、7圖、8條引用，並限定前兩章上述微修；其他47篇正文及23張舊圖逐位元不變。歷史 `check:unit02-industry` 適用2708488、`check:unit01-lifecycle` 適用ced34ec、`check:roadmap` 適用導覽階段209baae；後續章節已擴編，不能在新版執行歷史腳本並期待其他正文全不變。舊腳本、固定基線與結果原樣保留，不為新版本放寬舊驗收。
 
 ## 產出
 

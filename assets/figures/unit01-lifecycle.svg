@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-labelledby="title desc" data-figure-style="sts-flat-v1">
 <title id="title">晶片生命週期：資訊流與實物流</title>
-<desc id="desc">分圖a為需求規格、電路邏輯、版圖驗證及製造資料；光罩與製程資訊接入分圖b的晶圓製造。分圖b為投片、晶圓製造、晶圓測試、封裝、成品測試出貨；產業角色可重疊，圖中主線不是萬用製程或返工路徑。</desc>
+<desc id="desc">分圖1為需求規格、電路邏輯、版圖驗證及製造資料；光罩與製程資訊接入分圖2的晶圓製造。分圖2為投片、晶圓製造、晶圓測試、封裝、成品測試出貨；產業角色可重疊，圖中主線不是萬用製程或返工路徑。</desc>
 <defs>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M1 1 L9 5 L1 9" fill="none" stroke="#2e3d59" stroke-width="1.3"/>

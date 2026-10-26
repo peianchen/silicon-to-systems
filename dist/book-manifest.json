@@ -2,8 +2,8 @@
   "title": "Silicon to Systems：晶片設計、製造與系統",
   "chapters": 46,
   "appendices": 3,
-  "hanCharacters": 95746,
-  "equations": 1727,
+  "hanCharacters": 99287,
+  "equations": 1760,
   "generatedPages": 53,
   "documents": [
     {
@@ -15,13 +15,13 @@
     {
       "file": "02-engineering-mathematics.md",
       "title": "第 02 章　工程數學與量綱",
-      "characters": 14685,
+      "characters": 14697,
       "group": "數理與電路基礎"
     },
     {
       "file": "03-complex-phasors.md",
       "title": "第 03 章　複數、相量與頻域",
-      "characters": 7350,
+      "characters": 10879,
       "group": "數理與電路基礎"
     },
     {

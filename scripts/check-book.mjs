@@ -60,11 +60,13 @@ for(const doc of manifest.documents){
     must(order.every((v,i)=>v>=0&&(i===0||v>order[i-1])),doc.file+':reading sequence missing or out of order');
   }
   if(n===3){
-    must(new Set(figures.map(f=>f.href)).size===7,doc.file+':expected seven distinct figures');
-    must((md.match(/\*\*練習\d+。/g)||[]).length===12,doc.file+':expected twelve exercises');
-    must((md.match(/\*\*解答。\*\*/g)||[]).length===12,doc.file+':expected twelve solutions');
+    must(new Set(figures.map(f=>f.href)).size===9,doc.file+':expected nine distinct figures');
+    const formalPractice=md.split('## 練習與完整參考解答\n')[1]?.split('\n## 常見誤解與工程連結')[0]||'';
+    const questionNumbers=[...formalPractice.matchAll(/\*\*練習(\d+)。/g)].map(m=>Number(m[1]));
+    must(JSON.stringify(questionNumbers)===JSON.stringify(Array.from({length:16},(_,i)=>i+1)),doc.file+':expected unique ordered exercises 1–16');
+    must((formalPractice.match(/\*\*解答。\*\*/g)||[]).length===16,doc.file+':expected sixteen formal solutions');
     const captions=[...md.matchAll(/^圖 3-(\d+)　/gm)].map(m=>Number(m[1]));
-    must(JSON.stringify(captions)===JSON.stringify([1,2,3,4,5,6,7]),doc.file+':figure captions not consecutive');
+    must(JSON.stringify(captions)===JSON.stringify([1,2,3,4,5,6,7,8,9]),doc.file+':figure captions not consecutive');
     const order=['## 1. 先把','## 2. 複數','## 3. 從時間','## 4. 從元件','## 5. 有效值','## 6. 逐步','## 7. 把單頻','## 8. 從標稱','## 練習與完整'].map(t=>md.indexOf(t));
     must(order.every((v,i)=>v>=0&&(i===0||v>order[i-1])),doc.file+':reading sequence incomplete');
   }
@@ -176,7 +178,7 @@ for(const file of files.filter(f=>f.endsWith('.css'))){
     try{await stat(f);}catch{errors.push(`Missing CSS resource ${m[1]}`);}
   }
 }
-for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs','scripts/draw-unit01-lifecycle.mjs','scripts/audit-unit01-lifecycle-expansion.mjs','scripts/draw-unit02-industry.mjs','scripts/audit-unit02-industry-expansion.mjs']){
+for(const f of ['src/book.js','src/models.js','src/learning-paths.mjs','scripts/build-book.mjs','scripts/audit-industry-roadmap.mjs','scripts/draw-unit01-lifecycle.mjs','scripts/audit-unit01-lifecycle-expansion.mjs','scripts/draw-unit02-industry.mjs','scripts/audit-unit02-industry-expansion.mjs','scripts/draw-unit03-industry.mjs','scripts/audit-unit03-industry-expansion.mjs']){
   const result=spawnSync(process.execPath,['--check',path.join(root,f)],{encoding:'utf8'});
   must(result.status===0,`${f}:JavaScript syntax ${result.stderr}`);
 }
@@ -224,6 +226,37 @@ near('02 industry geometric resistance ohm',3e-8*100e-6/(2e-6*.2e-6),7.5);
 near('02 industry reduced geometry ratio',1/(.95*.9),1.169590643275);
 near('02 industry 5 ms allowable tau ms',5/Math.log(100),1.085736204758);
 near('02 industry 6 ms allowable tau ms',6/Math.log(100),1.302883445710);
+for(const [c,tau,gain,phase,gain10,settling] of [
+  [20,40,.969838831512684,-14.1078023715901,.369697847569619,184.206807439524],
+  [25,50,.954028216378465,-17.4405944905119,.303314471053353,230.258509299405],
+  [35,70,.915374758332741,-23.7409961285563,.221705922186541,322.361913019166],
+]){
+  const actualTau=2000*c*1e-12,x=2*Math.PI*1e6*actualTau;
+  near(`03 industry ${c} pF tau ns`,actualTau*1e9,tau);
+  near(`03 industry ${c} pF gain 1 MHz`,1/Math.sqrt(1+x*x),gain);
+  near(`03 industry ${c} pF phase deg`,-Math.atan(x)*180/Math.PI,phase);
+  near(`03 industry ${c} pF gain 10 MHz`,1/Math.sqrt(1+(10*x)**2),gain10);
+  near(`03 industry ${c} pF settling ns`,actualTau*Math.log(100)*1e9,settling);
+}
+const capLimit=Math.tan(Math.PI/10)/(2*Math.PI*1e6*2000)*1e12;
+near('03 industry gain cap limit pF',Math.sqrt(.95**-2-1)/(2*Math.PI*1e6*2000)*1e12,26.1558500274763);
+near('03 industry phase cap limit pF',capLimit,25.8562878816921);
+near('03 industry added cap budget pF',capLimit-20,5.85628788169206);
+near('03 industry remaining cap budget pF',capLimit-25,.85628788169206);
+near('03 industry supply budget mohm',.005/.1*1000,50);
+for(const [f,z1,zHalf] of [[1e6,20.9637405441958,20.2452365854561],[1e7,65.9381661895123,37.2419177823717],[1e8,628.636760016128,314.795241404462]]){
+  near(`03 industry ${f} Hz 1 nH mohm`,Math.sqrt(.02**2+(2*Math.PI*f*1e-9)**2)*1000,z1);
+  near(`03 industry ${f} Hz half nH mohm`,Math.sqrt(.02**2+(2*Math.PI*f*.5e-9)**2)*1000,zHalf);
+}
+near('03 industry 10 MHz 1 nH ripple mV',.1*Math.hypot(.02,2*Math.PI*1e7*1e-9)*1000,6.59381661895123);
+near('03 industry 10 MHz half nH ripple mV',.1*Math.hypot(.02,2*Math.PI*1e7*.5e-9)*1000,3.72419177823717);
+near('03 industry inductance limit nH',Math.sqrt(.05**2-.02**2)/(2*Math.PI*1e7)*1e9,.729339573945);
+near('03 industry AC resistive loss mW',.1**2*.02*1000,.2);
+const supplyV1=.1*Math.hypot(.02,2*Math.PI*1e6*.5e-9)*1000,supplyV10=.1*Math.hypot(.02,2*Math.PI*1e7*.5e-9)*1000;
+near('03 industry two-tone total RMS mV',Math.hypot(supplyV1,supplyV10),4.23890321251857);
+near('03 industry two-tone peak bound mV',Math.SQRT2*(supplyV1+supplyV10),8.12991133692178);
+near('03 industry probe settling difference ns',2000*10e-12*Math.log(100)*1e9,92.1034037197618);
+near('03 industry 60 mohm resistive ripple mV',.1*.06*1000,6);
 near('40 deliverable dies',600*Math.exp(-.12)*.98*.99,516.29412462);
 near('40 delivered cost',(5000+1.5*600*Math.exp(-.12))/(600*Math.exp(-.12)*.98*.99),11.23047526);
 near('41 beam stiffness N/m',160e9*16e-6*(2e-6)**3/(4*(160e-6)**3),1.25);

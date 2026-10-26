@@ -5,12 +5,12 @@
   "chapters": 46,
   "appendices": 3,
   "pages": 53,
-  "equations": 1727,
-  "localLinksChecked": 4275,
-  "imageReferencesChecked": 52,
-  "sourceFigureFilesChecked": 26,
-  "externalReferenceURLs": 157,
-  "numericalChecks": 271,
+  "equations": 1760,
+  "localLinksChecked": 4283,
+  "imageReferencesChecked": 56,
+  "sourceFigureFilesChecked": 28,
+  "externalReferenceURLs": 160,
+  "numericalChecks": 305,
   "numericalResults": [
     {
       "name": "03 quadrant angle deg",
@@ -1447,6 +1447,210 @@
       "passed": true
     },
     {
+      "name": "03 industry 20 pF tau ns",
+      "actual": 40,
+      "expected": 40,
+      "passed": true
+    },
+    {
+      "name": "03 industry 20 pF gain 1 MHz",
+      "actual": 0.9698388315126839,
+      "expected": 0.969838831512684,
+      "passed": true
+    },
+    {
+      "name": "03 industry 20 pF phase deg",
+      "actual": -14.107802371590129,
+      "expected": -14.1078023715901,
+      "passed": true
+    },
+    {
+      "name": "03 industry 20 pF gain 10 MHz",
+      "actual": 0.3696978475696188,
+      "expected": 0.369697847569619,
+      "passed": true
+    },
+    {
+      "name": "03 industry 20 pF settling ns",
+      "actual": 184.20680743952366,
+      "expected": 184.206807439524,
+      "passed": true
+    },
+    {
+      "name": "03 industry 25 pF tau ns",
+      "actual": 50,
+      "expected": 50,
+      "passed": true
+    },
+    {
+      "name": "03 industry 25 pF gain 1 MHz",
+      "actual": 0.954028216378465,
+      "expected": 0.954028216378465,
+      "passed": true
+    },
+    {
+      "name": "03 industry 25 pF phase deg",
+      "actual": -17.44059449051187,
+      "expected": -17.4405944905119,
+      "passed": true
+    },
+    {
+      "name": "03 industry 25 pF gain 10 MHz",
+      "actual": 0.30331447105335285,
+      "expected": 0.303314471053353,
+      "passed": true
+    },
+    {
+      "name": "03 industry 25 pF settling ns",
+      "actual": 230.25850929940458,
+      "expected": 230.258509299405,
+      "passed": true
+    },
+    {
+      "name": "03 industry 35 pF tau ns",
+      "actual": 70,
+      "expected": 70,
+      "passed": true
+    },
+    {
+      "name": "03 industry 35 pF gain 1 MHz",
+      "actual": 0.9153747583327411,
+      "expected": 0.915374758332741,
+      "passed": true
+    },
+    {
+      "name": "03 industry 35 pF phase deg",
+      "actual": -23.740996128556265,
+      "expected": -23.7409961285563,
+      "passed": true
+    },
+    {
+      "name": "03 industry 35 pF gain 10 MHz",
+      "actual": 0.22170592218654106,
+      "expected": 0.221705922186541,
+      "passed": true
+    },
+    {
+      "name": "03 industry 35 pF settling ns",
+      "actual": 322.3619130191664,
+      "expected": 322.361913019166,
+      "passed": true
+    },
+    {
+      "name": "03 industry gain cap limit pF",
+      "actual": 26.155850027476255,
+      "expected": 26.1558500274763,
+      "passed": true
+    },
+    {
+      "name": "03 industry phase cap limit pF",
+      "actual": 25.85628788169206,
+      "expected": 25.8562878816921,
+      "passed": true
+    },
+    {
+      "name": "03 industry added cap budget pF",
+      "actual": 5.856287881692062,
+      "expected": 5.85628788169206,
+      "passed": true
+    },
+    {
+      "name": "03 industry remaining cap budget pF",
+      "actual": 0.8562878816920616,
+      "expected": 0.85628788169206,
+      "passed": true
+    },
+    {
+      "name": "03 industry supply budget mohm",
+      "actual": 49.99999999999999,
+      "expected": 50,
+      "passed": true
+    },
+    {
+      "name": "03 industry 1000000 Hz 1 nH mohm",
+      "actual": 20.963740544195765,
+      "expected": 20.9637405441958,
+      "passed": true
+    },
+    {
+      "name": "03 industry 1000000 Hz half nH mohm",
+      "actual": 20.24523658545608,
+      "expected": 20.2452365854561,
+      "passed": true
+    },
+    {
+      "name": "03 industry 10000000 Hz 1 nH mohm",
+      "actual": 65.9381661895123,
+      "expected": 65.9381661895123,
+      "passed": true
+    },
+    {
+      "name": "03 industry 10000000 Hz half nH mohm",
+      "actual": 37.24191778237173,
+      "expected": 37.2419177823717,
+      "passed": true
+    },
+    {
+      "name": "03 industry 100000000 Hz 1 nH mohm",
+      "actual": 628.6367600161276,
+      "expected": 628.636760016128,
+      "passed": true
+    },
+    {
+      "name": "03 industry 100000000 Hz half nH mohm",
+      "actual": 314.7952414044621,
+      "expected": 314.795241404462,
+      "passed": true
+    },
+    {
+      "name": "03 industry 10 MHz 1 nH ripple mV",
+      "actual": 6.593816618951232,
+      "expected": 6.59381661895123,
+      "passed": true
+    },
+    {
+      "name": "03 industry 10 MHz half nH ripple mV",
+      "actual": 3.724191778237174,
+      "expected": 3.72419177823717,
+      "passed": true
+    },
+    {
+      "name": "03 industry inductance limit nH",
+      "actual": 0.7293395739449995,
+      "expected": 0.729339573945,
+      "passed": true
+    },
+    {
+      "name": "03 industry AC resistive loss mW",
+      "actual": 0.20000000000000004,
+      "expected": 0.2,
+      "passed": true
+    },
+    {
+      "name": "03 industry two-tone total RMS mV",
+      "actual": 4.23890321251857,
+      "expected": 4.23890321251857,
+      "passed": true
+    },
+    {
+      "name": "03 industry two-tone peak bound mV",
+      "actual": 8.129911336921783,
+      "expected": 8.12991133692178,
+      "passed": true
+    },
+    {
+      "name": "03 industry probe settling difference ns",
+      "actual": 92.10340371976183,
+      "expected": 92.1034037197618,
+      "passed": true
+    },
+    {
+      "name": "03 industry 60 mohm resistive ripple mV",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
       "name": "40 deliverable dies",
       "actual": 516.2941246217918,
       "expected": 516.29412462,
@@ -1647,13 +1851,13 @@
     },
     {
       "file": "02-engineering-mathematics.md",
-      "hanCharacters": 14685,
+      "hanCharacters": 14697,
       "references": 18
     },
     {
       "file": "03-complex-phasors.md",
-      "hanCharacters": 7350,
-      "references": 10
+      "hanCharacters": 10879,
+      "references": 16
     },
     {
       "file": "04-circuit-analysis.md",

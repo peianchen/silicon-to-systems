@@ -136,7 +136,7 @@ CMOS 主線先理解 08–10，再讀 12；11 是 BJT／類比支線，13 分開
 
 ## 原章節保留與新定位對照
 
-這是閱讀定位，不是章節完成度認證；同一章可以服務多個環節。表末欄記錄導覽調整階段（209baae）的保留狀態，不代表後續正文沒有擴編；後續修訂分別見[第一章紀錄](../research/unit-01-lifecycle-editorial.md)與[第二章紀錄](../research/unit-02-industry-editorial.md)。
+這是閱讀定位，不是章節完成度認證；同一章可以服務多個環節。表末欄記錄導覽調整階段（209baae）的保留狀態，不代表後續正文沒有擴編；後續修訂分別見[第一章紀錄](../research/unit-01-lifecycle-editorial.md)、[第二章紀錄](../research/unit-02-industry-editorial.md)與[第三章紀錄](../research/unit-03-industry-editorial.md)；第三章前另有[前兩章要求複核](../research/unit-01-02-requirements-review.md)及明示微修。
 
 | 原章節（編號與網址不變） | 產業環節／支援定位 | 導覽調整階段保留紀錄 |
 |---|---|---|
